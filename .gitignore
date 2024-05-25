@@ -1,5 +1,4 @@
 *.log
-*.json
 *.csv
 venv
 proxy/proxy.cfg
