@@ -28,19 +28,19 @@ pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autoba
 # Clone the dashboard repository
 cd /opt
 git clone https://github.com/Amateur-Digital-Network/ADN-Dashboard.git dashboard
-cd dashboard
+cd /opt/dashboard
 
 # Check and copy configuration files if not present
 if [ ! -f dashboard.cfg ]; then
   cp dashboard_SAMPLE.cfg dashboard.cfg
 fi
 
-cd proxy
+cd /opt/dashboard/proxy
 if [ ! -f proxy.cfg ]; then
   cp proxy_SAMPLE.cfg proxy.cfg
 fi
 
-cd ..
+cd /opt/dashboard
 
 # Create the database file
 python3 dash_db.py
