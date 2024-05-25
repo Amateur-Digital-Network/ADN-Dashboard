@@ -46,7 +46,7 @@ cd /opt/dashboard
 python3 dash_db.py
 
 # Set ownership of the html directory
-chown -R www-data:www-data html/
+chown -R www-data:www-data /opt/dashboard/html/
 
 # Create Apache configuration
 cat <<EOL > /etc/apache2/sites-available/adndash-default.conf
