@@ -3,6 +3,5 @@
 *.csv
 venv
 proxy/proxy.cfg
-log/*.log
 dashboard.cfg
 html/db/dashboard.db
