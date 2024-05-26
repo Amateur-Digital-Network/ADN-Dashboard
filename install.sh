@@ -74,9 +74,6 @@ if ! grep -q "<Directory /opt/dashboard/>" /etc/apache2/apache2.conf; then
 EOL
 fi
 
-# Restart Apache to apply changes
-systemctl restart apache2
-
 # Create log rotation configuration
 cat <<EOL > /etc/logrotate.d/dashboard
 /opt/dashboard/log/dashboard.log {
@@ -107,9 +104,6 @@ Restart=on-abort
 WantedBy=multi-user.target
 EOL
 
-# Enable adn_dashboard service
-systemctl enable adn_dashboard.service
-
 # Create adn_proxy service
 cat <<EOL > /etc/systemd/system/adn_proxy.service
 [Unit]
@@ -127,10 +121,13 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOL
 
-# Enable adn_proxy service
+# Enable services
+systemctl enable apache2
 systemctl enable adn_proxy.service
+systemctl enable adn_dashboard.service
 
 # Start services
+systemctl restart apache2
 systemctl start adn_proxy.service
 systemctl start adn_dashboard.service
 
