@@ -1,4 +1,5 @@
 <?php
+authenticateUserByIP();
     // Connect to the database
     function connectDatabase()
     {
@@ -38,34 +39,35 @@
         }
     }
      
+    // Autenticate with IP Address
     function authenticateUserByIP()
     {
         $conn = connectDatabase();
-
-        $query = "SELECT DISTINCT callsign FROM Clients WHERE host = '{$_SERVER['REMOTE_ADDR']}' AND logged_in = 1";
-        $result = $conn->query($query);
-     
+        $stmt = $conn->prepare("SELECT DISTINCT callsign FROM Clients WHERE host = :host AND logged_in = 1");
+        $stmt->bindValue(':host', $_SERVER['REMOTE_ADDR'], SQLITE3_TEXT);
+        $result = $stmt->execute();
         $callsign = "";
-     
-        // Only allow autologin if one callsign is logged from the client ip address
-        if ($result->num_rows != 1) {
+        $callsigns = [];
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $callsigns[] = $row['callsign'];
+        }
+        
+        if (count($callsigns) != 1) {
             return false;
         } else {
-            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-                $callsign = $row['callsign'];
-            }
+            $callsign = $callsigns[0];
         }
-     
-        $query = "SELECT int_id, callsign, psswd FROM Clients WHERE callsign = '$callsign' AND logged_in = 1";
-        $result = $conn->query($query);
+         
+        $stmt = $conn->prepare("SELECT int_id, callsign, psswd FROM Clients WHERE callsign = :callsign AND logged_in = 1");
+        $stmt->bindValue(':callsign', $callsign, SQLITE3_TEXT);
+        $result = $stmt->execute();
+        
         $int_ids = [];
-        if ($result) {
-            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-                $_SESSION['user_id'] = $row['callsign'];
-                $int_ids[] = $row['int_id'];
-            }
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $_SESSION['user_id'] = $row['callsign'];
+            $int_ids[] = $row['int_id'];
         }
-     
+         
         if (!empty($int_ids)) {
             $_SESSION['int_ids'] = array_unique($int_ids, SORT_NUMERIC);
             return true;
