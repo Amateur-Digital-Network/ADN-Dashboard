@@ -14,9 +14,11 @@
     function authenticateUser($username, $password)
     {
         $conn = connectDatabase();
-        $callsign = $conn->escapeString($username);
-        $query = "SELECT int_id, callsign, psswd FROM Clients WHERE callsign = '$callsign' AND logged_in = 1";
-        $result = $conn->query($query);
+        $query = "SELECT int_id, callsign, psswd FROM Clients WHERE callsign = ? COLLATE NOCASE AND logged_in = 1";
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(1, $username, SQLITE3_TEXT);
+        $result = $stmt->execute();
+        
         $int_ids = [];
         if ($result) {
             while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
@@ -27,7 +29,7 @@
                 }
             }
         }
-     
+        
         if (!empty($int_ids)) {
             $_SESSION['int_ids'] = array_unique($int_ids, SORT_NUMERIC);
             return true;
