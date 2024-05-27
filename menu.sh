@@ -1,5 +1,6 @@
 #!/bin/bash
 
+show_adnsystems() {
 clear
 
 echo "                  _____  _   _    _____           _                     "
@@ -12,6 +13,8 @@ echo "                                         __/ |                          "
 echo "                                        |___/                           "
 echo "                                                                        "
 echo "                                                                        "
+}
+show_adnsystems
 echo "************************************************************************"
 echo "*                                                                      *"
 echo "* This script will install or upgrade ADN Systems Server and Dashboard *"
@@ -66,14 +69,14 @@ install_update_server() {
     systemctl stop adn_parrot.service > /dev/null
     echo "Updating ADN Systems DMR Server..."
   else
-    echo "Installing ADN Systems DMR Server..."
-    
     # Update and install required packages
     echo "Updating package list and installing required packages... (this can take a while!)"
     apt-get update > /dev/null
     apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
     # Install Python packages
     pip3 install --no-cache-dir bitstring bitarray Twisted dmr_utils3 configparser resettabletimer setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray
+    show_adnsystems
+    echo "Installing ADN Systems DMR Server..."
   fi
 
   # Clone or update the server repository
@@ -186,12 +189,12 @@ install_update_dashboard() {
     echo "Installing the ADN Systems Dashboard..."
 
     # Update and install required packages
-    echo "Updating package list and installing required packages... (this can take a while)"
-    apt-get update > /dev/null
-    apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
+    #echo "Updating package list and installing required packages... (this can take a while)"
+    #apt-get update > /dev/null
+    #apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
 
     # Install Python packages
-    pip3 install --no-cache-dir bitstring bitarray Twisted dmr_utils3 configparser resettabletimer setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity 
+    #pip3 install --no-cache-dir bitstring bitarray Twisted dmr_utils3 configparser resettabletimer setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity 
   fi
 
   # Clone or update the dashboard repository
@@ -362,5 +365,11 @@ else
   install_update_server
   install_update_dashboard
 fi
+
+# Checking services status
+systemctl statu adn_server.service
+systemctl statu adn_proxy.service
+systemctl statu adn_parrot.service
+systemctl statu adn_dashboard.service
 
 echo "You're done. Enjoy!"
