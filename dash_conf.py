@@ -59,14 +59,13 @@ def mk_config(cfg_file):
                 CONF["GLOBAL"] = {
                     "PR_INC": conf.getboolean(section, "HOMEBREW_INC", fallback=True),
                     "LH_ROWS": conf.getint(section, "LASTHEARD_ROWS", fallback=10),
-                    "BRDG_INC": conf.getboolean(section, "BRIDGES_INC", fallback=False),
                     "EMPTY_MASTERS": conf.getboolean(section, "EMPTY_MASTERS", fallback=False),
                     "TGC_ROWS": conf.getint(section, "TGCOUNT_ROWS", fallback=20)
                     }
-            elif section == "FDMR CONNECTION":
-                CONF["FDMR_CXN"] = {
-                    "FD_IP": conf.get(section, "FDMR_IP", fallback="127.0.0.1"),
-                    "FD_PORT": conf.getint(section, "FDMR_PORT", fallback=4321),
+            elif section == "SERVER CONNECTION":
+                CONF["SERVER_CXN"] = {
+                    "SRV_IP": conf.get(section, "SERVER_IP", fallback="127.0.0.1"),
+                    "SRV_PORT": conf.getint(section, "SERVER_PORT", fallback=4321),
                     }
             elif section == "OPB FILTER":
                 CONF["OPB_FLTR"] = {

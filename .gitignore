@@ -4,3 +4,4 @@ venv
 proxy/proxy.cfg
 dashboard.cfg
 html/db/dashboard.db
+html/admin/

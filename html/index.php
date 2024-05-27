@@ -45,17 +45,17 @@ if (!isset($_SESSION['preloader_displayed'])) {
     </div>
     <?php endif; ?>
     <?php include 'include/navbar.php';?>
-    <div class="content-wrapper"<?php if ($config['DASHBOARD']['BACKGROUND']) echo ' style="background-image: url(\'img/bk.jpg\'); background-attachment: fixed;"'; ?>>
+    <div class="content-wrapper" style="background-image: url('img/<?php echo $config['DASHBOARD']['BACKGROUND']; ?>'), url('img/background_SAMPLE.jpg'); background-attachment: fixed;">
       <div class="content-header">
         <div class="container">
           <div class="row mb-2 justify-content-center">
             <div class="col-sm-auto">
-              <img src="../img/logo.png" alt="FreeDMR" width="100%">
+              <img src="../img/<?php echo $config['DASHBOARD']['BANNER']; ?>" width="100%" onerror="this.onerror=null; this.src='../img/banner_SAMPLE.png';" alt="<?php echo $config['DASHBOARD']['NAVTITLE']; ?>">
             </div>
           </div>
         </div>
       </div>
-      <div class="content">
+      <div class="content" style="min-height: 75vh;">
         <?php
           $page = isset($_GET['p']) ? $_GET['p'] : 'home';
               include 'include/' . $page . '.php';

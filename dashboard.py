@@ -81,6 +81,8 @@ CONF = mk_config("dashboard.cfg")
 
 # Global Variables:
 CONFIG = {}
+# Removed from config
+BRIDGES_INC = False
 # Number of rows showed on the lastheard log page
 LASTHEARD_LOG_ROWS = 70
 CTABLE = {
@@ -722,7 +724,7 @@ def build_stats():
             lnksys = "c" + ctemplate.render(_table=CTABLE, emaster=CONF["GLOBAL"]["EMPTY_MASTERS"])
             dashboard_server.broadcast(lnksys, "lnksys")
         if GROUPS["opb"]:
-            opb = "o" + otemplate.render(_table=CTABLE,dbridges=CONF["GLOBAL"]["BRDG_INC"])
+            opb = "o" + otemplate.render(_table=CTABLE,dbridges=BRIDGES_INC)
             dashboard_server.broadcast(opb, "opb")
         if GROUPS["statictg"]:
             statictg = "s" + stemplate.render(_table=CTABLE, emaster=CONF["GLOBAL"]["EMPTY_MASTERS"])
@@ -730,9 +732,9 @@ def build_stats():
         if GROUPS["lsthrd_log"]:
             render_fromdb("lstheard_log", LASTHEARD_LOG_ROWS)
 
-    if BRIDGES and CONF["GLOBAL"]["BRDG_INC"]:
+    if BRIDGES and BRIDGES_INC:
         if GROUPS["bridge"]:
-            bridges = "b" + btemplate.render(_table=BTABLE,dbridges=CONF["GLOBAL"]["BRDG_INC"])
+            bridges = "b" + btemplate.render(_table=BTABLE,dbridges=BRIDGES_INC)
             dashboard_server.broadcast(bridges, "bridge")
     build_time = time()
 
@@ -946,7 +948,7 @@ def process_message(_bmessage):
         logger.debug("got BRIDGE_SND opcode")
         BRIDGES = load_dictionary(_bmessage)
         BRIDGES_RX = strftime("%Y-%m-%d %H:%M:%S", localtime(time()))
-        if CONF["GLOBAL"]["BRDG_INC"]:
+        if BRIDGES_INC:
             BTABLE["BRIDGES"] = build_bridge_table(BRIDGES)
         build_tgstats()
 
@@ -1115,10 +1117,10 @@ class dashboard(WebSocketServerProtocol):
                     continue
                 self.factory.register(self, group)
                 if group == "bridge":
-                    if BRIDGES and CONF["GLOBAL"]["BRDG_INC"]:
+                    if BRIDGES and BRIDGES_INC:
                         self.sendMessage(
                             ("b" + btemplate.render(
-                                _table=BTABLE,dbridges=CONF["GLOBAL"]["BRDG_INC"])).encode("utf-8"))
+                                _table=BTABLE,dbridges=BRIDGES_INC)).encode("utf-8"))
                 elif group == "lnksys":
                     self.sendMessage(
                         ("c" + ctemplate.render(
@@ -1126,7 +1128,7 @@ class dashboard(WebSocketServerProtocol):
                 elif group == "opb":
                     self.sendMessage(
                         ("o" + otemplate.render(
-                            _table=CTABLE,dbridges=CONF["GLOBAL"]["BRDG_INC"])).encode("utf-8"))
+                            _table=CTABLE,dbridges=BRIDGES_INC)).encode("utf-8"))
                 elif group == "main":
                     render_fromdb("last_heard", CONF["GLOBAL"]["LH_ROWS"], self)
                 elif group == "statictg":
@@ -1273,7 +1275,7 @@ if __name__ == "__main__":
 
     # Connect to HBlink
     reactor.connectTCP(
-        CONF["FDMR_CXN"]["FD_IP"], CONF["FDMR_CXN"]["FD_PORT"], reportClientFactory())
+        CONF["SERVER_CXN"]["SRV_IP"], CONF["SERVER_CXN"]["SRV_PORT"], reportClientFactory())
 
     logger.info(f'Starting webserver on port {CONF["WS"]["WS_PORT"]} with SSL = {CONF["WS"]["USE_SSL"]}')
 
