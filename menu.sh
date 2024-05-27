@@ -59,11 +59,11 @@ install_update_server() {
 
   # Check if the server is already installed
   if [ -d /opt/adnserver ]; then
-    read -p "ADN Systems DMR Server is already installed! \nDo you want to update it from the latest version? (y/n): " update_choice
-    if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
-      echo "Exiting without making any changes."
-      exit 0
-    fi
+    # read -p "ADN Systems DMR Server is already installed! Do you want to update it from the latest version? (y/n): " update_choice
+    # if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
+    #   echo "Exiting without making any changes."
+    #   exit 0
+    # fi
     echo "Stopping services before updating..."
     systemctl stop adn_server.service > /dev/null
     systemctl stop adn_parrot.service > /dev/null
@@ -176,11 +176,11 @@ install_update_dashboard() {
 
   # Check if the dashboard is already installed
   if [ -d /opt/dashboard ]; then
-    read -p "Dashboard is already installed. \nDo you want to update it from the latest version on GitHub? (y/n): " update_choice
-    if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
-      echo "Exiting without making any changes."
-      exit 0
-    fi
+    # read -p "Dashboard is already installed. Do you want to update it from the latest version on GitHub? (y/n): " update_choice
+    # if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
+    #   echo "Exiting without making any changes."
+    #   exit 0
+    # fi
     echo "Stopping services before updating..."
     systemctl stop adn_proxy.service > /dev/null
     systemctl stop adn_dashboard.service > /dev/null
