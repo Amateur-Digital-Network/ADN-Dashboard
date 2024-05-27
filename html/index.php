@@ -41,7 +41,7 @@ if (!isset($_SESSION['preloader_displayed'])) {
   <div class="wrapper">
     <?php if ($display_preloader): ?>
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__wobble" src="img/Logo_mini.png" alt="" height="60" width="60">
+      <img class="animation__wobble" src="img/logo.png" alt="" height="60" width="60">
     </div>
     <?php endif; ?>
     <?php include 'include/navbar.php';?>
@@ -55,7 +55,7 @@ if (!isset($_SESSION['preloader_displayed'])) {
           </div>
         </div>
       </div>
-      <div class="content" style="min-height: 75vh;">
+      <div class="content" <?php if (!$display_preloader) { echo 'style="min-height: 75vh;"';} ?>>
         <?php
           $page = isset($_GET['p']) ? $_GET['p'] : 'home';
               include 'include/' . $page . '.php';
