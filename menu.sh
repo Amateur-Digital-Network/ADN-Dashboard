@@ -73,7 +73,7 @@ install_update_server() {
     apt-get update > /dev/null
     apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
     # Install Python packages
-    pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
+    pip3 install --upgrade --ignore-installed --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
   fi
 
   # Clone or update the server repository
@@ -191,7 +191,7 @@ install_update_dashboard() {
     apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
 
     # Install Python packages
-    pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
+    pip3 install --upgrade --ignore-installed --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
   fi
 
   # Clone or update the dashboard repository
