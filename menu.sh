@@ -42,8 +42,8 @@ fi
 # Install net-tools if not installed
 if ! command -v netstat &> /dev/null; then
   echo "Installing net-tools..."
-  apt update > /dev/null
-  apt install -y net-tools > /dev/null
+  apt-get update > /dev/null
+  apt-get install -y net-tools > /dev/null
 fi
 
 # Function to install/update the ADN Server
@@ -70,10 +70,10 @@ install_update_server() {
     
     # Update and install required packages
     echo "Updating package list and installing required packages... (this can take a while!)"
-    apt update > /dev/null
-    apt install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3 > /dev/null
+    apt-get update > /dev/null
+    apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
     # Install Python packages
-    pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne > /dev/null
+    pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
   fi
 
   # Clone or update the server repository
@@ -187,11 +187,11 @@ install_update_dashboard() {
 
     # Update and install required packages
     echo "Updating package list and installing required packages... (this can take a while)"
-    apt update > /dev/null
-    apt install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3 > /dev/null
+    apt-get update > /dev/null
+    apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
 
     # Install Python packages
-    pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne > /dev/null
+    pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
   fi
 
   # Clone or update the dashboard repository
