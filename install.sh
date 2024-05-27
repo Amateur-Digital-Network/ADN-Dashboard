@@ -18,19 +18,41 @@ if [[ "$VERSION_ID" != "10" && "$VERSION_ID" != "11" && "$VERSION_ID" != "18.04"
   exit 1
 fi
 
-# Update and install required packages
-apt update
-apt install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
+# Check if the dashboard is already installed
+if [ -d /opt/dashboard ]; then
+  read -p "Dashboard is already installed. Do you want to update it from the latest version on GitHub? (y/n): " update_choice
+  if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
+    echo "Exiting without making any changes."
+    exit 0
+  fi
+  echo "Stopping services before updating..."
+  systemctl stop adn_proxy.service > /dev/null
+  systemctl stop adn_dashboard.service > /dev/null
+  echo "Updating the dashboard..."
+else
+  echo "Installing the dashboard..."
 
-# Install Python packages
-pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
+  # Update and install required packages
+  echo "Updating package list and installing required packages..."
+  apt update > /dev/null
+  apt install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3 > /dev/null
 
-# Clone the dashboard repository
-cd /opt
-git clone https://github.com/Amateur-Digital-Network/ADN-Dashboard.git dashboard
-cd /opt/dashboard
+  # Install Python packages
+  echo "Installing Python packages..."
+  pip3 install --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne > /dev/null
+fi
+
+# Clone or update the dashboard repository
+if [ -d /opt/dashboard ]; then
+  cd /opt/dashboard
+  git pull > /dev/null
+else
+  cd /opt
+  git clone https://github.com/Amateur-Digital-Network/ADN-Dashboard.git dashboard > /dev/null
+fi
 
 # Check and copy configuration files if not present
+cd /opt/dashboard
 if [ ! -f dashboard.cfg ]; then
   cp dashboard_SAMPLE.cfg dashboard.cfg
 fi
@@ -42,13 +64,18 @@ fi
 
 cd /opt/dashboard
 
-# Create the database file
-python3 dash_db.py
+# Create the database file only if installing
+if [ ! -f /opt/dashboard/dashboard.db ]; then
+  echo "Creating the database file..."
+  python3 dash_db.py > /dev/null
+fi
 
 # Set ownership of the html directory
+echo "Setting ownership of the html directory..."
 chown -R www-data:www-data /opt/dashboard/html/
 
 # Create Apache configuration
+echo "Creating Apache configuration..."
 cat <<EOL > /etc/apache2/sites-available/adndash-default.conf
 <VirtualHost *:80>
 	ServerAdmin webmaster@localhost
@@ -59,8 +86,9 @@ cat <<EOL > /etc/apache2/sites-available/adndash-default.conf
 EOL
 
 # Disable default Apache site and enable the new site
-a2dissite 000-default.conf
-a2ensite adndash-default.conf
+echo "Configuring Apache..."
+a2dissite 000-default.conf > /dev/null
+a2ensite adndash-default.conf > /dev/null
 
 # Update Apache configuration
 if ! grep -q "<Directory /opt/dashboard/>" /etc/apache2/apache2.conf; then
@@ -75,7 +103,9 @@ EOL
 fi
 
 # Create log rotation configuration
-cat <<EOL > /etc/logrotate.d/dashboard
+if [ ! -f /etc/logrotate.d/dashboard ]; then
+  echo "Creating log rotation configuration..."
+  cat <<EOL > /etc/logrotate.d/dashboard
 /opt/dashboard/log/dashboard.log {
     daily
     rotate 7
@@ -85,9 +115,12 @@ cat <<EOL > /etc/logrotate.d/dashboard
     copytruncate
 }
 EOL
+fi
 
 # Create adn_dashboard service
-cat <<EOL > /etc/systemd/system/adn_dashboard.service
+if [ ! -f /etc/systemd/system/adn_dashboard.service ]; then
+  echo "Creating ADN Dashboard service..."
+  cat <<EOL > /etc/systemd/system/adn_dashboard.service
 [Unit]
 Description=ADN Dashboard
 After=network-online.target syslog.target
@@ -103,9 +136,12 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOL
+fi
 
 # Create adn_proxy service
-cat <<EOL > /etc/systemd/system/adn_proxy.service
+if [ ! -f /etc/systemd/system/adn_proxy.service ]; then
+  echo "Creating Proxy service..."
+  cat <<EOL > /etc/systemd/system/adn_proxy.service
 [Unit]
 Description=ADN Server Proxy
 After=multi-user.target
@@ -120,15 +156,18 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 EOL
+fi
 
 # Enable services
-systemctl enable apache2
-systemctl enable adn_proxy.service
-systemctl enable adn_dashboard.service
+echo "Enabling services..."
+systemctl enable apache2 > /dev/null
+systemctl enable adn_proxy.service > /dev/null
+systemctl enable adn_dashboard.service > /dev/null
 
 # Start services
-systemctl restart apache2
-systemctl start adn_proxy.service
-systemctl start adn_dashboard.service
+echo "Starting services..."
+systemctl restart apache2 > /dev/null
+systemctl start adn_proxy.service > /dev/null
+systemctl start adn_dashboard.service > /dev/null
 
-echo "ADN Dashboard installation and setup complete."
+echo "ADN Dashboard and Proxy installation complete."
