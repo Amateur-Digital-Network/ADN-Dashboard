@@ -367,9 +367,9 @@ else
 fi
 
 # Checking services status
-systemctl statu adn_server.service
-systemctl statu adn_proxy.service
-systemctl statu adn_parrot.service
-systemctl statu adn_dashboard.service
+systemctl status adn_server.service
+systemctl status adn_proxy.service
+systemctl status adn_parrot.service
+systemctl status adn_dashboard.service
 
 echo "You're done. Enjoy!"
