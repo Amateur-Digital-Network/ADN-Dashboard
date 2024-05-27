@@ -355,7 +355,7 @@ if $dashboard_installed || $server_installed; then
   esac
 else
   read -p "Do you want to install ADN Systems DMR Server with Dashboard? (y/n): " install_choice
-  if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
+  if [[ "$install_choice" != "y" && "$install_choice" != "Y" ]]; then
     echo "Exiting without making any changes."
     exit 0
   fi
