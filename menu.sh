@@ -350,9 +350,9 @@ if $dashboard_installed || $server_installed; then
   echo "4 - Exit"
   read -p "Choose (1/2/3/4): " update_choice
   case $update_choice in
-    1) install_update_server ;;
-    2) install_update_dashboard ;;
-    3) install_update_dashboard; install_update_server ;;
+    1) show_adnsystems; install_update_server ;;
+    2) show_adnsystems; install_update_dashboard ;;
+    3) show_adnsystems; install_update_dashboard; install_update_server ;;
     4) echo "Exiting without making any changes."; exit 0 ;;
     *) echo "Invalid choice."; exit 1 ;;
   esac
@@ -362,6 +362,7 @@ else
     echo "Exiting without making any changes."
     exit 0
   fi
+  show_adnsystems
   install_update_server
   install_update_dashboard
 fi
