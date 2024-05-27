@@ -341,14 +341,14 @@ fi
 if $dashboard_installed || $server_installed; then
   echo "ADN Systems Server and Dashboard are already installed."
   echo "Do you want to update:"
-  echo "1 - only the Dashboard"
-  echo "2 - only the DMR Server"
+  echo "1 - only the DMR Server"
+  echo "2 - only the Dashboard"
   echo "3 - both DMR Server and Dashboard"
   echo "4 - Exit"
   read -p "Choose (1/2/3/4): " update_choice
   case $update_choice in
-    1) install_update_dashboard ;;
-    2) install_update_server ;;
+    1) install_update_server ;;
+    2) install_update_dashboard ;;
     3) install_update_dashboard; install_update_server ;;
     4) echo "Exiting without making any changes."; exit 0 ;;
     *) echo "Invalid choice."; exit 1 ;;
