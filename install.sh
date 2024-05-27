@@ -20,12 +20,10 @@ fi
 
 # Check if the dashboard is already installed
 if [ -d /opt/dashboard ]; then
-  if [ -z "$FORCE_UPDATE" ]; then
-    read -p "Dashboard is already installed. Do you want to update it from the latest version on GitHub? (y/n): " update_choice
-    if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
-      echo "Exiting without making any changes."
-      exit 0
-    fi
+  read -p "Dashboard is already installed. Do you want to update it from the latest version on GitHub? (y/n): " update_choice
+  if [[ "$update_choice" != "y" && "$update_choice" != "Y" ]]; then
+    echo "Exiting without making any changes."
+    exit 0
   fi
   echo "Stopping services before updating..."
   systemctl stop adn_proxy.service > /dev/null
