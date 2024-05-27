@@ -45,7 +45,7 @@ fi
 # Clone or update the dashboard repository
 if [ -d /opt/dashboard ]; then
   cd /opt/dashboard
-  git pull > /dev/null
+  git pull --ff-only > /dev/null
 else
   cd /opt
   git clone https://github.com/Amateur-Digital-Network/ADN-Dashboard.git dashboard > /dev/null
@@ -65,7 +65,7 @@ fi
 cd /opt/dashboard
 
 # Create the database file only if installing
-if [ ! -f /opt/dashboard/dashboard.db ]; then
+if [ ! -f /opt/dashboard/html/db/dashboard.db ]; then
   echo "Creating the database file..."
   python3 dash_db.py > /dev/null
 fi
