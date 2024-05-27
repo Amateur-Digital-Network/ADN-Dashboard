@@ -10,8 +10,8 @@ echo "         / ____ \| |__| | |\  |  ____) | |_| \__ \ ||  __/ | | | | \__ \\"
 echo "        /_/    \_\_____/|_| \_| |_____/ \__, |___/\__\___|_| |_| |_|___/"
 echo "                                         __/ |                          "
 echo "                                        |___/                           "
-echo ""
-echo ""
+echo "                                                                        "
+echo "                                                                        "
 
 # Check if the script is run as root
 if [[ $EUID -ne 0 ]]; then
