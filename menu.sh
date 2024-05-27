@@ -34,8 +34,8 @@ if [[ "$ID" != "debian" && "$ID" != "ubuntu" ]]; then
   exit 1
 fi
 
-if [[ "$VERSION_ID" != "10" && "$VERSION_ID" != "11" && "$VERSION_ID" != "18.04" && "$VERSION_ID" != "20.04" && "$VERSION_ID" != "22.04" ]]; then
-  echo "Unsupported Debian/Ubuntu version. Supported versions: Debian 10, Debian 11, Ubuntu 18.04, 20.04, 22.04."
+if [[ "$VERSION_ID" != "11" && "$VERSION_ID" != "20.04" && "$VERSION_ID" != "22.04" ]]; then
+  echo "Unsupported Debian/Ubuntu version. Supported versions: Debian 11, Ubuntu 20.04, 22.04."
   exit 1
 fi
 
@@ -73,7 +73,7 @@ install_update_server() {
     apt-get update > /dev/null
     apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
     # Install Python packages
-    pip3 install --upgrade --ignore-installed --no-cache-dir bitstring>=3.1.5 bitarray>=0.8.1 Twisted>=16.3.0 dmr_utils3>=0.1.19 configparser>=3.0.0 resettabletimer>=0.7.0 setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray
+    pip3 install --no-cache-dir bitstring bitarray Twisted dmr_utils3 configparser resettabletimer setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray
   fi
 
   # Clone or update the server repository
@@ -191,7 +191,7 @@ install_update_dashboard() {
     apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
 
     # Install Python packages
-    pip3 install --upgrade --ignore-installed --no-cache-dir bitstring>=3.1.5 bitarray>=0.8.1 Twisted>=16.3.0 dmr_utils3>=0.1.19 configparser>=3.0.0 resettabletimer>=0.7.0 setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray
+    pip3 install --no-cache-dir bitstring bitarray Twisted dmr_utils3 configparser resettabletimer setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity 
   fi
 
   # Clone or update the dashboard repository
