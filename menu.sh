@@ -359,7 +359,8 @@ else
     echo "Exiting without making any changes."
     exit 0
   fi
-  install_update_dashboard; install_update_server ;;
+  install_update_server
+  install_update_dashboard
 fi
 
 echo "You're done. Enjoy!"
