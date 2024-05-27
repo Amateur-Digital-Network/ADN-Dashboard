@@ -73,7 +73,7 @@ install_update_server() {
     apt-get update > /dev/null
     apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
     # Install Python packages
-    pip3 install --upgrade --ignore-installed --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
+    pip3 install --upgrade --ignore-installed --no-cache-dir bitstring>=3.1.5 bitarray>=0.8.1 Twisted>=16.3.0 dmr_utils3>=0.1.19 configparser>=3.0.0 resettabletimer>=0.7.0 setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray
   fi
 
   # Clone or update the server repository
@@ -191,7 +191,7 @@ install_update_dashboard() {
     apt-get install -y git wget python3 python3-pip python3-dev libffi-dev libssl-dev cargo sed build-essential apache2 php libapache2-mod-php php-sqlite3
 
     # Install Python packages
-    pip3 install --upgrade --ignore-installed --no-cache-dir setuptools wheel Twisted dmr_utils3 bitstring autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray configparser resettabletimer setproctitle Pyro5 spyne
+    pip3 install --upgrade --ignore-installed --no-cache-dir bitstring>=3.1.5 bitarray>=0.8.1 Twisted>=16.3.0 dmr_utils3>=0.1.19 configparser>=3.0.0 resettabletimer>=0.7.0 setproctitle Pyro5 spyne setuptools wheel autobahn jinja2 MarkupSafe pyOpenSSL service-identity bitarray
   fi
 
   # Clone or update the dashboard repository
