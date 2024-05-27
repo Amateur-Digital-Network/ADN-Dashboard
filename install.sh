@@ -31,6 +31,19 @@ if [[ "$VERSION_ID" != "10" && "$VERSION_ID" != "11" && "$VERSION_ID" != "18.04"
   exit 1
 fi
 
+# Install net-tools if not installed
+if ! command -v netstat &> /dev/null; then
+  echo "Installing net-tools..."
+  apt update > /dev/null
+  apt install -y net-tools > /dev/null
+fi
+
+# Check if TCP port 9000 is in use and /opt/dashboard does not exist
+if netstat -tuln | grep ':9000' > /dev/null && [ ! -d /opt/dashboard ]; then
+  echo "It seems that you have a custom dashboard installation already installed. Please remove the current installation and run this script again."
+  exit 1
+fi
+
 # Check if the dashboard is already installed
 if [ -d /opt/dashboard ]; then
   read -p "Dashboard is already installed. Do you want to update it from the latest version on GitHub? (y/n): " update_choice
