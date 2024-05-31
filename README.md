@@ -13,7 +13,7 @@ apt-get install -y curl
 ```
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Amateur-Digital-Network/ADN-Dashboard/main/install.sh -o install.sh && bash install.sh
+curl -sSL https://raw.githubusercontent.com/Amateur-Digital-Network/ADN-Dashboard/main/script.sh -o script.sh && bash script.sh
 ```
 
 

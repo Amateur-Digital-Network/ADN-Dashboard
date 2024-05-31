@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Check for SSL configuration and certificates
+if grep -q "USE_SSL = True" "/opt/adn-dashboard/dashboard.cfg" && [ -f "/opt/apachecerts/cert.pem" ] && [ -f "/opt/apachecerts/key.pem" ] && [ -f "/opt/apachecerts/chain.pem" ]
+then
+	cron -L 0
+	a2ensite adndash-default-ssl.conf
+fi
+# Check if the database file does not exist, then initialize the database
+if [ ! -f /opt/dashboard/html/db/dashboard.db ]; then
+    cd /opt/adn-dashboard
+    python3 dash_db.py
+fi
+
+# Run hotspot proxy before starting the dashboard
+cd /opt/adn-dashboard/proxy
+python3 hotspot_proxy_v2.py &
+
+# Start the dashboard
+cd /opt/dashboard/
+python3 /opt/adn-dashboard/dashboard.py &
+
+# Start Apache
+exec docker-php-entrypoint apache2-foreground

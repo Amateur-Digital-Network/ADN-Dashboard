@@ -1,0 +1,55 @@
+version: '2.4'
+services:
+    adn-server:
+        container_name: adn-server
+        cpu_shares: 1024
+        mem_reservation: 600m
+        volumes:
+            - '/etc/ADN-Systems/adn-server/:/opt/adn-server/'
+        ports:
+            #Change the below to inlude ports used for your OBP(s)
+            - '62041:62041/udp' # default OBP port
+        build: dashboard/docker/adn-server
+        restart: "unless-stopped"
+        networks:
+           app_net:
+             ipv4_address: 172.16.250.10
+
+    adn-dashboard:
+        container_name: adn-dashboard
+        cpu_shares: 512
+        volumes:
+             - '/etc/ADN-Systems/certs/:/opt/apachecerts/'
+             - '/etc/ADN-Systems/certs/:/opt/adn-dashboard/ssl/'
+             - '/etc/ADN-Systems/acme.sh/:/root/.acme.sh/'
+             - '/etc/ADN-Systems/adn-dashboard/:/opt/adn-dashboard/'
+        ports:
+            - '62031:62031/udp'
+            - '80:80/tcp'
+            - '443:443/tcp'
+            - '9000:9000'
+        build: dashboard/docker/adn-dashboard
+        restart: "unless-stopped"
+          ############################################################################
+          #  Set USE_SSL = to True in dashboard.cfg to enable TLS support            #
+          #  you'll need to actually generate the certtificates too                  #
+          #  using these commands when the container is running:                     #
+          #                                                                          #
+          #    docker exec -it adn-dashboard gencert.sh <admin email> <server FQDN>  #
+          #    docker-compose restart adn-dashboard                                  #
+          #                                                                          #
+          #  This only needs to be done once                                         #
+          #  The container will handle renewing the certificates every 60 days.      #
+          ############################################################################
+        networks:
+           app_net:
+             ipv4_address: 172.16.250.11
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.250.0/24
+          gateway: 172.16.250.1

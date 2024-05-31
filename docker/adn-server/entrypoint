@@ -1,0 +1,6 @@
+#!/bin/sh
+cd /opt/adn-server
+
+echo 'Starting ADN Server...'
+python /opt/adn-server/playback.py -c /opt/adn-server/config/parrot.cfg &
+python /opt/adn-server/bridge_master.py -c /opt/adn-server/config/adn.cfg
