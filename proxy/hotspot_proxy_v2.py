@@ -422,7 +422,7 @@ if __name__ == '__main__':
         Master = '::ffff:' + Master
 
     # Create an instance of db_proxy and them pass it to the proxy
-    db_proxy = ProxyDB("/opt/dashboard/html/db/dashboard.db")
+    db_proxy = ProxyDB("/opt/adn-dashboard/html/db/dashboard.db")
     db_proxy.test_db(reactor)
 
     srv_proxy = Proxy(Master,ListenPort,CONNTRACK,PEERTRACK,BlackList,IPBlackList,Timeout,Debug,ClientInfo,DestportStart,DestPortEnd,PRIV_HELPER, RPTLTRACK, db_proxy)
