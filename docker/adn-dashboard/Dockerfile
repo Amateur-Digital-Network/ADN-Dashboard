@@ -13,11 +13,11 @@ RUN echo Install needed packages... && \
     echo Creating ADN Dashboard folder... && \
     mkdir -p /opt/adn-dashboard && \
     echo Modify Apache config... && \
-    echo "<Directory /opt/adn-dashboard/>" > /etc/apache2/apache2.conf && \
-    echo "    Options Indexes FollowSymLinks" >> /etc/apache2/apache2.conf && \
-    echo "    AllowOverride None" >> /etc/apache2/apache2.conf && \
-    echo "    Require all granted" >> /etc/apache2/apache2.conf && \
-    echo "</Directory>" >> /etc/apache2/apache2.conf && \
+    echo '<Directory /opt/adn-dashboard/>\n\
+    Options Indexes FollowSymLinks\n\
+    AllowOverride None\n\
+    Require all granted\n\
+    </Directory>' >> /etc/apache2/apache2.conf && \
     echo Enable Apache stuff... && \
     a2enmod proxy rewrite proxy_http proxy_wstunnel ssl socache_shmcb headers && \
     a2dissite adnsdash-default-ssl.conf 000-default.conf default-ssl.conf && \
