@@ -9,7 +9,7 @@ services:
         ports:
             #Change the below to inlude ports used for your OBP(s)
             - '62041:62041/udp' # default OBP port
-        build: dashboard/docker/adn-server
+        build: adn-dashboard/docker/adn-server
         restart: "unless-stopped"
         networks:
            app_net:
@@ -28,7 +28,7 @@ services:
             - '80:80/tcp'
             - '443:443/tcp'
             - '9000:9000'
-        build: dashboard/docker/adn-dashboard
+        build: adn-dashboard/docker/adn-dashboard
         restart: "unless-stopped"
           ############################################################################
           #  Set USE_SSL = to True in dashboard.cfg to enable TLS support            #
