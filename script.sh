@@ -451,8 +451,8 @@ remove_adn_systems() {
         echo "Stopping and Removing Containers..."
         cd /etc/ADN-Systems
         docker-compose down
-        docker-compose rm -f -v adn-server
-        docker-compose rm -f -v adn-dashboard
+	docker rmi $(docker images -q) -f
+ 	docker system prune -a -f
 
         echo "Backup config files to /opt/..."
         cp /etc/ADN-Systems/adn-server/config/adn.cfg /opt/adn.cfg
