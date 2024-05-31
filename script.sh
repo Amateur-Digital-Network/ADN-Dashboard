@@ -319,7 +319,8 @@ EOF
     cd /etc/ADN-Systems/adn-dashboard
     cp dashboard_SAMPLE.cfg dashboard.cfg
     sed -i 's|SERVER_IP = 127.0.0.1|SERVER_IP = 172.16.250.10|' dashboard.cfg
-    sed -i 's|LOG_PATH = ./log|LOG_PATH = /dev/null|' dashboard.cfg
+    sed -i 's|LOG_PATH = ./log|LOG_PATH = /dev/|' dashboard.cfg
+    sed -i 's|LOG_FILE =  dashboard.log|LOG_FILE = null|' dashboard.cfg
     cd /etc/ADN-Systems/adn-dashboard/proxy
     cp proxy_SAMPLE.cfg proxy.cfg
     sed -i 's|MASTER = 127.0.0.1|MASTER = 172.16.250.10|' proxy.cfg
