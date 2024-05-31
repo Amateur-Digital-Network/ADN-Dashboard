@@ -19,9 +19,12 @@ RUN echo Install needed packages... && \
     echo "    Require all granted" >> /etc/apache2/apache2.conf && \
     echo "</Directory>" >> /etc/apache2/apache2.conf && \
     echo Enable Apache stuff... && \
-    a2enmod proxy proxy_wstunnel ssl socache_shmcb headers && \
+    a2enmod proxy rewrite proxy_http proxy_wstunnel ssl socache_shmcb headers && \
     a2dissite adnsdash-default-ssl.conf 000-default.conf default-ssl.conf && \
     a2ensite adndash-default.conf && \
+    echo Cleaning stuff... && \
+    apt-get purge -y git gcc libffi-dev libssl-dev cargo && \
+    apt-get autoremove -y && \
     echo Adding Cron stuff... && \
     mkdir -p /var/spool/crontabs && \
     echo "50 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null" > /var/spool/crontabs/root && \
