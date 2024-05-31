@@ -333,7 +333,7 @@ EOF
     cp proxy_SAMPLE.cfg proxy.cfg
     sed -i 's|MASTER = 127.0.0.1|MASTER = 172.16.250.10|' proxy.cfg
     chmod -R 755 /etc/ADN-Systems
-    chown 54000:54000 /etc/ADN-Systems/adn-server
+    chown -R 54000:54000 /etc/ADN-Systems/adn-server
 
     #Tune network stack
     echo "Tunning network stack..."
