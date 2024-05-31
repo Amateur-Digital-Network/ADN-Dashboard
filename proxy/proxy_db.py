@@ -121,5 +121,5 @@ class ProxyDB:
 
 
 if __name__ == "__main__":
-    db_test = ProxyDB('/opt/dashboard/html/db/dashboard.db')
+    db_test = ProxyDB('/opt/adn-dashboard/html/db/dashboard.db')
     print(db_test)
