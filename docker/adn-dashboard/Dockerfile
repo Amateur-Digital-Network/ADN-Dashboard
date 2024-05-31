@@ -19,7 +19,7 @@ RUN echo Install needed packages... && \
     echo "    Require all granted" >> /etc/apache2/apache2.conf && \
     echo "</Directory>" >> /etc/apache2/apache2.conf && \
     echo Enable Apache stuff... && \
-    a2enmod proxy rewrite proxy_http proxy_wstunnel ssl socache_shmcb headers && \
+    a2enmod proxy mpm_event mpm_prefork rewrite proxy_http proxy_wstunnel ssl socache_shmcb headers && \
     a2dissite adnsdash-default-ssl.conf 000-default.conf default-ssl.conf && \
     a2ensite adndash-default.conf && \
     echo Cleaning stuff... && \
