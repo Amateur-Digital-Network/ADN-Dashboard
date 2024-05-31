@@ -29,8 +29,11 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
 fi
-
-# Function to install ADN Systems
+###################################
+#                                 #
+# Function to install ADN Systems #
+#                                 #
+###################################
 install_adn_systems() {
     show_adnsystems
 
@@ -249,7 +252,11 @@ EOL
     echo "ADN Systems DMR Server and Dashboard installation complete."
 }
 
-# Function to install ADN Systems docker
+##########################################
+#                                        #
+# Function to install ADN Systems docker #
+#                                        #
+##########################################
 install_adn_systems_docker() {
     # Install net-tools if not installed
     if ! command -v netstat &> /dev/null; then
@@ -351,8 +358,11 @@ EOF
 
 }
 
-
-# Function update the ADN Server
+##################################
+#                                #
+# Function update the ADN Server #
+#                                #
+##################################
 update_adn_systems() {
     show_adnsystems
 
@@ -412,7 +422,11 @@ update_adn_systems() {
     fi
 }
 
-# Remove ADN Systems
+##################################
+#                                #
+# Function to Remove ADN Systems #
+#                                #
+##################################
 remove_adn_systems() {
     show_adnsystems
     if [ -d /opt/adn-server ]; then
@@ -469,7 +483,11 @@ remove_adn_systems() {
     echo "Remove complete."
 }
 
-# show services status
+########################
+#                      #
+# show services status #
+#                      #
+########################
 show_adn_status() {
     # Checking services status
     systemctl status adn_server.service
