@@ -315,7 +315,8 @@ EOF
     echo "Copy config files..."
     cp /etc/ADN-Systems/adn-dashboard/docker/docker-compose.yml /etc/ADN-Systems/docker-compose.yml
     cd /etc/ADN-Systems/adn-server/config
-    cp ADN-SAMPLE.cfg adn.cfg    
+    cp ADN-SAMPLE.cfg adn.cfg
+    sed -i 's|REPORT_CLIENTS: 127.0.0.1|REPORT_CLIENTS: *|' adn.cfg
     cd /etc/ADN-Systems/adn-dashboard
     cp dashboard_SAMPLE.cfg dashboard.cfg
     sed -i 's|SERVER_IP = 127.0.0.1|SERVER_IP = 172.16.250.10|' dashboard.cfg
