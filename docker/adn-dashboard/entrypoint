@@ -7,7 +7,7 @@ then
 	a2ensite adndash-default-ssl.conf
 fi
 # Check if the database file does not exist, then initialize the database
-if [ ! -f /opt/dashboard/html/db/dashboard.db ]; then
+if [ ! -f /opt/adn-dashboard/html/db/dashboard.db ]; then
     cd /opt/adn-dashboard
     python3 dash_db.py
 fi
@@ -17,7 +17,7 @@ cd /opt/adn-dashboard/proxy
 python3 hotspot_proxy_v2.py &
 
 # Start the dashboard
-cd /opt/dashboard/
+cd /opt/adn-dashboard/
 python3 /opt/adn-dashboard/dashboard.py &
 
 # Start Apache
