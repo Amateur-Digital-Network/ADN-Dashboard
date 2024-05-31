@@ -462,10 +462,10 @@ server_installed=false
 docker_installed=false
 
 # Check if Server/Dashboard or Docker installed
-if [ -d /opt/adn-server]; then
+if [ -d /opt/adn-server ]; then
     server_installed=True
 fi
-if [ -d /etc/ADN-Systems]; then
+if [ -d /etc/ADN-Systems ]; then
     docker_installed=True
 fi
 
