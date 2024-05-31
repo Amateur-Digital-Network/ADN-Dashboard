@@ -4,7 +4,7 @@
 
 ## Install Instructions
 
-Supported versions: Debian 10, Debian 11, Ubuntu 18.04, 20.04, 22.04.
+Supported versions: Debian 11, Ubuntu 18.04, 20.04, 22.04.
 
 **Install/Update Script**
 
