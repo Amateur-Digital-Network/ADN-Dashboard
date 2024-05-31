@@ -14,7 +14,7 @@ fi
 
 # Run hotspot proxy before starting the dashboard
 cd /opt/adn-dashboard/proxy
-python3 hotspot_proxy_v2.py &
+python3 hotspot_proxy_v2.py -c /opt/adn-dashboard/proxy/proxy.cfg &
 
 # Start the dashboard
 cd /opt/adn-dashboard/
