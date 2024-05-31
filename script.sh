@@ -251,16 +251,36 @@ EOL
 
 # Function to install ADN Systems docker
 install_adn_systems_docker() {
+    # Install net-tools if not installed
+    if ! command -v netstat &> /dev/null; then
+    echo "Installing net-tools..."
+    apt-get update > /dev/null
+    apt-get install -y net-tools > /dev/null
+    fi
+
+    # Check if TCP port 4321 is in use and /opt/adnserver does not exist
+    if netstat -tuln | grep ':4321' > /dev/null && [ ! -d /opt/adnserver ]; then
+        echo "It seems that you have a custom ADN server installation already installed. Please remove the current installation and run this script again."
+        exit 1
+    fi
+
+    # Check if TCP port 9000 is in use and /opt/dashboard does not exist
+    if netstat -tuln | grep ':9000' > /dev/null && [ ! -d /opt/adn-dashboard ]; then
+        echo "It seems that you have a custom Dashboard installation already installed. Please remove the current installation and run this script again."
+        exit 1
+    fi
+
     # install Docker Community Edition
     echo "Updating package list and installing required packages..."
     apt-get -y remove docker.io docker-doc docker-compose podman-docker containerd runc
+    set -e
     apt-get update
-    apt-get -y install ca-certificates curl gpg apt-transport-https gnupg2 software-properties-common
-    curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-    chmod a+r /etc/apt/keyrings/docker.asc
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-    tee /etc/apt/sources.list.d/docker.list > /dev/null
+    apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
+    curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+    
     apt-get -y update
     apt-get -y install docker-ce docker-compose docker-compose-plugin
 
@@ -281,7 +301,7 @@ EOF
     systemctl restart docker
 
     # Making config folders
-    mkdir -p /ect/ADN-Systems
+    mkdir -p /etc/ADN-Systems
     mkdir -p /etc/ADN-Systems/acme.sh
     mkdir -p /etc/ADN-Systems/certs
 
@@ -346,11 +366,11 @@ update_adn_systems() {
 
         # Update the server repository
         cd /opt/adn-server
-        git pull --ff-only > /dev/null
+        git pull --ff-only 
 
         # Update the dashboard repository
         cd /opt/adn-dashboard
-        git pull --ff-only > /dev/null
+        git pull --ff-only 
 
         # Start services
         echo "Starting services..."
@@ -421,6 +441,7 @@ remove_adn_systems() {
         rm -rf /opt/adn-server
         rm -rf /opt/adn-dashboard
 
+        echo "Removing Apache Settings..."
         sed -i.bak '/<Directory \/opt\/adn-dashboard\/>/,/<\/Directory>/d' /etc/apache2/apache2.conf
         a2dissite adndash-default.conf > /dev/null
         a2ensite 000-default.conf > /dev/null
@@ -463,13 +484,13 @@ docker_installed=false
 
 # Check if Server/Dashboard or Docker installed
 if [ -d /opt/adn-server ]; then
-    server_installed=True
+    server_installed=true
 fi
 if [ -d /etc/ADN-Systems ]; then
-    docker_installed=True
+    docker_installed=true
 fi
 
-if $server_installed || $docker_installed; then
+if [ "$server_installed" = true ] || [ "$docker_installed" = true ]; then
     echo "************************************************************************"
     echo "*                                                                      *"
     echo "*    ADN Systems DMR Server and Dashboard detected.                    *"
