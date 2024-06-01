@@ -16,8 +16,13 @@ if (!isset($_SESSION['preloader_displayed'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $config['DASHBOARD']['DASHTITLE']; ?></title>
-  <link rel="icon" type="image/png" href="img/favicon.ico">
-  <link rel="icon" type="image/png" href="img/favicon_SAMPLE.ico">
+  <?php
+  if (file_exists('img/favicon.ico')) {
+        echo '<link rel="icon" type="image/png" href="img/favicon.ico">';
+    } else {
+        echo '<link rel="icon" type="image/png" href="img/favicon_SAMPLE.ico">';
+    }
+  ?>
   <meta name="description" content="<?php echo $config['DASHBOARD']['DASHTITLE']; ?>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
