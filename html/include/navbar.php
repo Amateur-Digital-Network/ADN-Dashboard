@@ -108,6 +108,10 @@
                     'it' => 'IT',
                     'nl' => 'NL',
                     'de' => 'DE',
+                    'ru' => 'RU',
+                    'ua' => 'UA',
+                    'gr' => 'GR',
+                    'hu' => 'HU',
                 );
                 if (array_key_exists($selectedLanguage, $languages)) {
                     $selectedLanguageName = $languages[$selectedLanguage];

@@ -1,13 +1,4 @@
 {
-    "title": {
-        "en": "FreeDMR Server",
-        "pt": "FreeDMR Server",
-        "es": "FreeDMR Server",
-        "fr": "FreeDMR Server",
-        "it": "FreeDMR Server",
-        "nl": "FreeDMR Server",
-        "de": "FreeDMR Server"
-    },
     "nav_dash": {
         "en": "Dashboard",
         "pt": "Dashboard",
@@ -15,7 +6,11 @@
         "fr": "Tableau de bord",
         "it": "Dashboard",
         "nl": "Dashboard",
-        "de": "Dashboard"
+        "de": "Dashboard",
+        "ru": "Панель управления",
+        "ua": "Панель управління",
+        "gr": "Πίνακας ελέγχου",
+        "hu": "Irányítópult"
     },
     "nav_lnksys": {
         "en": "Linked Systems",
@@ -24,7 +19,11 @@
         "fr": "Systèmes Liés",
         "it": "Sistemi Collegati",
         "nl": "Gekoppelde Systemen",
-        "de": "Verknüpfte Systeme"
+        "de": "Verknüpfte Systeme",
+        "ru": "Связанные системы",
+        "ua": "Пов'язані системи",
+        "gr": "Συνδεδεμένα Συστήματα",
+        "hu": "Kapcsolt rendszerek"
     },
     "nav_statg": {
         "en": "Static TG's",
@@ -33,7 +32,11 @@
         "fr": "TG Statiques",
         "it": "TG Statici",
         "nl": "TG Statisch",
-        "de": "Statische TGs"
+        "de": "Statische TGs",
+        "ru": "Статические TG",
+        "ua": "Статичні TG",
+        "gr": "Στατικές TG",
+        "hu": "Statikus TG-k"
     },
     "nav_opb": {
         "en": "OpenBridge",
@@ -42,7 +45,11 @@
         "fr": "OpenBridge",
         "it": "OpenBridge",
         "nl": "OpenBridge",
-        "de": "OpenBridge"
+        "de": "OpenBridge",
+        "ru": "OpenBridge",
+        "ua": "OpenBridge",
+        "gr": "OpenBridge",
+        "hu": "OpenBridge"
     },
     "nav_tptg": {
         "en": "TOP TG's",
@@ -51,7 +58,11 @@
         "fr": "Top TG's",
         "it": "Top TG's",
         "nl": "Top TG's",
-        "de": "Top TG's"
+        "de": "Top TG's",
+        "ru": "ТОП TG",
+        "ua": "ТОП TG",
+        "gr": "Κορυφαία TG",
+        "hu": "TOP TG"
     },
     "nav_mon": {
         "en": "Monitor",
@@ -60,7 +71,11 @@
         "fr": "Moniteur",
         "it": "Monitor",
         "nl": "Monitor",
-        "de": "Monitor"
+        "de": "Monitor",
+        "ru": "Монитор",
+        "ua": "Монітор",
+        "gr": "Οθόνη",
+        "hu": "Monitor"
     },
     "nav_info": {
         "en": "Info",
@@ -69,7 +84,11 @@
         "fr": "Info",
         "it": "Informazioni",
         "nl": "Informaties",
-        "de": "Informationen"
+        "de": "Informationen",
+        "ru": "Информация",
+        "ua": "Інформація",
+        "gr": "Πληροφορίες",
+        "hu": "Információ"
     },
     "nav_tglst": {
         "en": "TG List",
@@ -78,7 +97,11 @@
         "fr": "Liste des TG",
         "it": "Elenco TG",
         "nl": "Lijst van TG",
-        "de": "TG-Liste"
+        "de": "TG-Liste",
+        "ru": "Список TG",
+        "ua": "Список TG",
+        "gr": "Λίστα TG",
+        "hu": "TG lista"
     },
     "nav_brdglst": {
         "en": "Bridge List",
@@ -87,7 +110,11 @@
         "fr": "Liste des Ponts",
         "it": "Elenco Ponti",
         "nl": "Lijst van brug",
-        "de": "Brückenliste"
+        "de": "Brückenliste",
+        "ru": "Список мостов",
+        "ua": "Список мостів",
+        "gr": "Λίστα γεφυρών",
+        "hu": "Hídlajstrom"
     },
     "nav_srvlst": {
         "en": "Server List",
@@ -96,7 +123,11 @@
         "fr": "Liste des Serveurs",
         "it": "Elenco Server",
         "nl": "Lijst van servers",
-        "de": "Serverliste"
+        "de": "Serverliste",
+        "ru": "Список серверов",
+        "ua": "Список серверів",
+        "gr": "Λίστα διακομιστών",
+        "hu": "Szerverlista"
     },
     "nav_calc": {
         "en": "Options Calculator",
@@ -105,7 +136,11 @@
         "fr": "Calculatrice d’options",
         "it": "Calcolatore di opzioni",
         "nl": "Opties berekenen",
-        "de": "Optionsrechner"
+        "de": "Optionsrechner",
+        "ru": "Калькулятор опционов",
+        "ua": "Калькулятор опціонів",
+        "gr": "Υπολογιστής επιλογών",
+        "hu": "Opciók kalkulátor"
     },
     "pre_wait": {
         "en": "Waiting for server info...",
@@ -114,7 +149,11 @@
         "fr": "attente des informations du serveur...",
         "it": "in attesa delle informazioni del server...",
         "nl": "Wachten op informaties van server...",
-        "de": "Warten auf Serverinformationen..."
+        "de": "Warten auf Serverinformationen...",
+        "ru": "Ожидание информации о сервере...",
+        "ua": "Очікування інформації про сервер...",
+        "gr": "Αναμονή για πληροφορίες διακομιστή...",
+        "hu": "Várakozás a szerverinformációkra..."
     },
     "smb_aq": {
         "en": "Active QSO's",
@@ -123,7 +162,11 @@
         "fr": "QSO actifs",
         "it": "QSO attivi",
         "nl": "Active QSO's",
-        "de": "Aktive QSOs"
+        "de": "Aktive QSOs",
+        "ru": "Активные QSO",
+        "ua": "Активні QSO",
+        "gr": "Ενεργές QSO",
+        "hu": "Aktív QSO-k"
     },
     "smb_rptr": {
         "en": "Repeaters",
@@ -132,7 +175,11 @@
         "fr": "Répéteurs",
         "it": "Ripetitori",
         "nl": "Repeaters",
-        "de": "Repeater"
+        "de": "Repeater",
+        "ru": "Репитеры",
+        "ua": "Репітери",
+        "gr": "Επαναλήπτες",
+        "hu": "Ismétlők"
     },
     "smb_htspts": {
         "en": "HotSpots",
@@ -141,7 +188,11 @@
         "fr": "HotSpots",
         "it": "Hotspots",
         "nl": "Hotspots",
-        "de": "Hotspots"
+        "de": "Hotspots",
+        "ru": "Хотспоты",
+        "ua": "Хотспоти",
+        "gr": "HotSpots",
+        "hu": "Hotspotok"
     },
     "smb_brdg": {
         "en": "Bridges",
@@ -150,7 +201,11 @@
         "fr": "Ponts",
         "it": "Ponti",
         "nl": "Bruggen",
-        "de": "Brücken"
+        "de": "Brücken",
+        "ru": "Мосты",
+        "ua": "Мости",
+        "gr": "Γέφυρες",
+        "hu": "Hidak"
     },
     "act_tbl": {
         "en": "Activity",
@@ -159,7 +214,11 @@
         "fr": "Activité",
         "it": "Attività",
         "nl": "Activiteit",
-        "de": "Aktivität"
+        "de": "Aktivität",
+        "ru": "Активность",
+        "ua": "Активність",
+        "gr": "Δραστηριότητα",
+        "hu": "Tevékenység"
     },
     "lh_tbl": {
         "en": "Last Heard",
@@ -168,7 +227,11 @@
         "fr": "Dernières Écoutes",
         "it": "Ultimi Ascolti",
         "nl": "Laatst gehoord",
-        "de": "Letzte gehört"
+        "de": "Letzte gehört",
+        "ru": "Последние Прослушивания",
+        "ua": "Останні Прослуховування",
+        "gr": "Τελευταίες Ακροάσεις",
+        "hu": "Legutóbbi Hallgatások"
     },
     "lh_date": {
         "en": "Date",
@@ -177,7 +240,11 @@
         "fr": "Date",
         "it": "Data",
         "nl": "Datum",
-        "de": "Datum"
+        "de": "Datum",
+        "ru": "Дата",
+        "ua": "Дата",
+        "gr": "Ημερομηνία",
+        "hu": "Dátum"
     },
     "lh_time": {
         "en": "Time",
@@ -186,7 +253,11 @@
         "fr": "Heure",
         "it": "Ora",
         "nl": "Tijd",
-        "de": "Zeit"
+        "de": "Zeit",
+        "ru": "Время",
+        "ua": "Час",
+        "gr": "Ώρα",
+        "hu": "Idő"
     },
     "lh_callsignid": {
         "en": "Callsign (ID)",
@@ -195,7 +266,11 @@
         "fr": "Indicatif (ID)",
         "it": "Indicativo (ID)",
         "nl": "Roepnaam (ID)",
-        "de": "Rufzeichen (ID)"
+        "de": "Rufzeichen (ID)",
+        "ru": "Позывной (ID)",
+        "ua": "Позивний (ID)",
+        "gr": "Κλήση (ID)",
+        "hu": "Hívójel (ID)"
     },
     "lh_name": {
         "en": "Name",
@@ -204,7 +279,11 @@
         "fr": "Nom",
         "it": "Nome",
         "nl": "Naam",
-        "de": "Name"
+        "de": "Name",
+        "ru": "Имя",
+        "ua": "Ім'я",
+        "gr": "Όνομα",
+        "hu": "Név"
     },
     "lh_tgnum": {
         "en": "TG#",
@@ -213,7 +292,11 @@
         "fr": "TG#",
         "it": "TG#",
         "nl": "TG#",
-        "de": "TG#"
+        "de": "TG#",
+        "ru": "TG#",
+        "ua": "TG#",
+        "gr": "TG#",
+        "hu": "TG#"
     },
     "lh_tgname": {
         "en": "TG Name",
@@ -222,7 +305,11 @@
         "fr": "Nom TG",
         "it": "Nome TG",
         "nl": "TG-Naam",
-        "de": "TG-Name"
+        "de": "TG-Name",
+        "ru": "Имя TG",
+        "ua": "Назва TG",
+        "gr": "Όνομα TG",
+        "hu": "TG Név"
     },
     "lh_system": {
         "en": "Source",
@@ -231,7 +318,11 @@
         "fr": "Source",
         "it": "Sorgente",
         "nl": "Oorsprong",
-        "de": "Quelle"
+        "de": "Quelle",
+        "ru": "Источник",
+        "ua": "Джерело",
+        "gr": "Πηγή",
+        "hu": "Forrás"
     },
     "lh_viewmore": {
         "en": "+ View More",
@@ -240,7 +331,11 @@
         "fr": "+ Voir plus",
         "it": "+ Vedi altro",
         "nl": "+ Meer zien",
-        "de": "+ Mehr anzeigen"
+        "de": "+ Mehr anzeigen",
+        "ru": "+ Смотреть ещё",
+        "ua": "+ Переглянути більше",
+        "gr": "+ Δείτε περισσότερα",
+        "hu": "+ Tovább"
     },
     "crd_rptrs": {
         "en": "Repeaters",
@@ -249,7 +344,11 @@
         "fr": "Répéteurs",
         "it": "Ripetitori",
         "nl": "Repeater",
-        "de": "Repeater"
+        "de": "Repeater",
+        "ru": "Ретрансляторы",
+        "ua": "Ретранслятори",
+        "gr": "Επαναλήπτες",
+        "hu": "Ismétlők"
     },
     "crd_htspts": {
         "en": "HotSpots",
@@ -258,7 +357,11 @@
         "fr": "HotSpots",
         "it": "Hotspots",
         "nl": "Hotspots",
-        "de": "Hotspots"
+        "de": "Hotspots",
+        "ru": "Точки доступа",
+        "ua": "Точки доступу",
+        "gr": "Σημεία πρόσβασης",
+        "hu": "Hotspotok"
     },
     "crd_brdg": {
         "en": "Bridges",
@@ -267,7 +370,11 @@
         "fr": "Ponts",
         "it": "Ponti",
         "nl": "Bruggen",
-        "de": "Brücken"
+        "de": "Brücken",
+        "ru": "Мосты",
+        "ua": "Мости",
+        "gr": "Γέφυρες",
+        "hu": "Hidak"
     },
     "tbl_rptrs": {
         "en": ".: Repeaters :.",
@@ -276,7 +383,11 @@
         "fr": ".: Répéteurs :.",
         "it": ".: Ripetitori :.",
         "nl": ".: Repeaters :.",
-        "de": ".: Repeater :."
+        "de": ".: Repeater :.",
+        "ru": ".: Повторители :.",
+        "ua": ".: Повторювачі :.",
+        "gr": ".: Επαναλήπτες :.",
+        "hu": ".: Ismétlők :."
     },
     "trpt_callsign": {
         "en": "Callsign",
@@ -285,7 +396,11 @@
         "fr": "Indicatif",
         "it": "Indicativo",
         "nl": "Roepnaam",
-        "de": "Rufzeichen"
+        "de": "Rufzeichen",
+        "ru": "Позывной",
+        "ua": "Позивний",
+        "gr": "Συστάτης",
+        "hu": "Hívójel"
     },
     "trpt_id": {
         "en": "ID",
@@ -294,7 +409,11 @@
         "fr": "ID",
         "it": "ID",
         "nl": "ID",
-        "de": "ID"
+        "de": "ID",
+        "ru": "ID",
+        "ua": "ID",
+        "gr": "ID",
+        "hu": "ID"
     },
     "trpt_loc": {
         "en": "Location, locator",
@@ -303,7 +422,11 @@
         "fr": "Emplacement, locator",
         "it": "Posizione, locator",
         "nl": "Locatie, lokator",
-        "de": "Standort, Locator"
+        "de": "Standort, Locator",
+        "ru": "Местоположение, локатор",
+        "ua": "Місцезнаходження, локатор",
+        "gr": "Τοποθεσία, εντοπιστής",
+        "hu": "Helyszín, helymeghatározó"
     },
     "trpt_contime": {
         "en": "Time Connected",
@@ -312,7 +435,11 @@
         "fr": "Temps Connecté",
         "it": "Tempo di Connessione",
         "nl": "Tijd aangesloten",
-        "de": "Verbindungszeit"
+        "de": "Verbindungszeit",
+        "ru": "Время подключения",
+        "ua": "Час підключення",
+        "gr": "Χρόνος σύνδεσης",
+        "hu": "Csatlakozási idő"
     },
     "trpt_slot": {
         "en": "Slot",
@@ -321,7 +448,11 @@
         "fr": "Slot",
         "it": "Slot",
         "nl": "Slot",
-        "de": "Slot"
+        "de": "Slot",
+        "ru": "Слот",
+        "ua": "Слот",
+        "gr": "Θέση",
+        "hu": "Slot"
     },
     "trpt_src": {
         "en": "Source",
@@ -330,7 +461,11 @@
         "fr": "Source",
         "it": "Sorgente",
         "nl": "Oorsprong",
-        "de": "Quelle"
+        "de": "Quelle",
+        "ru": "Источник",
+        "ua": "Джерело",
+        "gr": "Πηγή",
+        "hu": "Forrás"
     },
     "trpt_dst": {
         "en": "Destination",
@@ -339,7 +474,11 @@
         "fr": "Destination",
         "it": "Destinazione",
         "nl": "Bestemming",
-        "de": "Ziel"
+        "de": "Ziel",
+        "ru": "Назначение",
+        "ua": "Призначення",
+        "gr": "Προορισμός",
+        "hu": "Cél"
     },
     "trpt_stctg": {
         "en": "Static TG",
@@ -348,7 +487,11 @@
         "fr": "TG Statique",
         "it": "TG Statico",
         "nl": "TG Statisch",
-        "de": "Statischer TG"
+        "de": "Statischer TG",
+        "ru": "Статический TG",
+        "ua": "Статичний TG",
+        "gr": "Στατικός TG",
+        "hu": "Statikus TG"
     },
     "trpt_untg": {
         "en": "Unique TG",
@@ -357,7 +500,11 @@
         "fr": "TG Unique",
         "it": "TG Unico",
         "nl": "Alleenstaand TG",
-        "de": "Einzigartiger TG"
+        "de": "Einzigartiger TG",
+        "ru": "Уникальный TG",
+        "ua": "Унікальний TG",
+        "gr": "Μοναδικός TG",
+        "hu": "Egyedi TG"
     },
     "trpt_to": {
         "en": "T/O",
@@ -366,7 +513,11 @@
         "fr": "T/O",
         "it": "T/O",
         "nl": "T/O",
-        "de": "T/O"
+        "de": "T/O",
+        "ru": "T/O",
+        "ua": "T/O",
+        "gr": "T/O",
+        "hu": "T/O"
     },
     "tbl_htspts": {
         "en": ".: HotSpots :.",
@@ -375,7 +526,11 @@
         "fr": ".: HotSpots :.",
         "it": ".: Hotspots :.",
         "nl": ".: Hotspots :.",
-        "de": ".: Hotspots :."
+        "de": ".: Hotspots :.",
+        "ru": ".: Горячие Точки :.",
+        "ua": ".: Гарячі Точки :.",
+        "gr": ".: Σημεία Επαφής :.",
+        "hu": ".: HotSpotok :."
     },
     "thtsp_callsign": {
         "en": "Callsign",
@@ -384,7 +539,11 @@
         "fr": "Indicatif",
         "it": "Indicativo",
         "nl": "Roepnaam",
-        "de": "Rufzeichen"
+        "de": "Rufzeichen",
+        "ru": "Позывной",
+        "ua": "Позивний",
+        "gr": "Κωδικός Κλήσης",
+        "hu": "Hívójel"
     },
     "thtsp_id": {
         "en": "ID",
@@ -393,7 +552,11 @@
         "fr": "ID",
         "it": "ID",
         "nl": "ID",
-        "de": "ID"
+        "de": "ID",
+        "ru": "ID",
+        "ua": "ID",
+        "gr": "ID",
+        "hu": "ID"
     },
     "thtsp_loc": {
         "en": "Location, locator",
@@ -402,7 +565,11 @@
         "fr": "Emplacement, locator",
         "it": "Posizione, locator",
         "nl": "Locatie, lokator",
-        "de": "Standort, Locator"
+        "de": "Standort, Locator",
+        "ru": "Местоположение, локатор",
+        "ua": "Місцезнаходження, локатор",
+        "gr": "Τοποθεσία, εντοπιστής",
+        "hu": "Hely, lokátor"
     },
     "thtsp_contime": {
         "en": "Time Connected",
@@ -411,7 +578,11 @@
         "fr": "Temps Connecté",
         "it": "Tempo di Connessione",
         "nl": "Aangesloten tijd",
-        "de": "Verbindungszeit"
+        "de": "Verbindungszeit",
+        "ru": "Время соединения",
+        "ua": "Час з'єднання",
+        "gr": "Χρόνος Σύνδεσης",
+        "hu": "Kapcsolódási idő"
     },
     "thtsp_slot": {
         "en": "Slot",
@@ -420,7 +591,11 @@
         "fr": "Slot",
         "it": "Slot",
         "nl": "Slot",
-        "de": "Slot"
+        "de": "Slot",
+        "ru": "Слот",
+        "ua": "Слот",
+        "gr": "Θέση",
+        "hu": "Slot"
     },
     "thtsp_src": {
         "en": "Source",
@@ -429,7 +604,11 @@
         "fr": "Source",
         "it": "Sorgente",
         "nl": "Oorsprong",
-        "de": "Quelle"
+        "de": "Quelle",
+        "ru": "Источник",
+        "ua": "Джерело",
+        "gr": "Πηγή",
+        "hu": "Forrás"
     },
     "thtsp_dst": {
         "en": "Destination",
@@ -438,7 +617,11 @@
         "fr": "Destination",
         "it": "Destinazione",
         "nl": "Bestemming",
-        "de": "Ziel"
+        "de": "Ziel",
+        "ru": "Назначение",
+        "ua": "Призначення",
+        "gr": "Προορισμός",
+        "hu": "Cél"
     },
     "thtsp_stctg": {
         "en": "Static TG",
@@ -447,7 +630,11 @@
         "fr": "TG Statique",
         "it": "TG Statico",
         "nl": "Statisch TG",
-        "de": "Statischer TG"
+        "de": "Statischer TG",
+        "ru": "Статический TG",
+        "ua": "Статичний TG",
+        "gr": "Στατικό TG",
+        "hu": "Statikus TG"
     },
     "thtsp_untg": {
         "en": "Unique TG",
@@ -456,7 +643,11 @@
         "fr": "TG Unique",
         "it": "TG Unico",
         "nl": "Alleenstaand TG",
-        "de": "Einzigartiger TG"
+        "de": "Einzigartiger TG",
+        "ru": "Уникальный TG",
+        "ua": "Унікальний TG",
+        "gr": "Μοναδικό TG",
+        "hu": "Egyedi TG"
     },
     "thtsp_to": {
         "en": "T/O",
@@ -465,7 +656,11 @@
         "fr": "T/O",
         "it": "T/O",
         "nl": "T/O",
-        "de": "T/O"
+        "de": "T/O",
+        "ru": "T/O",
+        "ua": "T/O",
+        "gr": "T/O",
+        "hu": "T/O"
     },
     "tbl_brdgs": {
         "en": ".: Bridges :.",
@@ -474,7 +669,11 @@
         "fr": ".: Ponts :.",
         "it": ".: Ponti :.",
         "nl": ".: Bruggen :.",
-        "de": ".: Brücken :."
+        "de": ".: Brücken :.",
+        "ru": ".: Мосты :.",
+        "ua": ".: Мости :.",
+        "gr": ".: Γέφυρες :.",
+        "hu": ".: Hidak :."
     },
     "tbrdg_callsign": {
         "en": "Callsign",
@@ -483,7 +682,11 @@
         "fr": "Indicatif",
         "it": "Indicativo",
         "nl": "Roepnaam",
-        "de": "Rufzeichen"
+        "de": "Rufzeichen",
+        "ru": "Позывной",
+        "ua": "Позивний",
+        "gr": "Κωδικός κλήσης",
+        "hu": "Hívójel"
     },
     "tbrdg_id": {
         "en": "ID",
@@ -492,7 +695,11 @@
         "fr": "ID",
         "it": "ID",
         "nl": "ID",
-        "de": "ID"
+        "de": "ID",
+        "ru": "ID",
+        "ua": "ID",
+        "gr": "ID",
+        "hu": "ID"
     },
     "tbrdg_loc": {
         "en": "Location, locator",
@@ -501,7 +708,11 @@
         "fr": "Emplacement, locator",
         "it": "Posizione, locator",
         "nl": "Locatie, lokator",
-        "de": "Standort, Locator"
+        "de": "Standort, Locator",
+        "ru": "Местоположение, локатор",
+        "ua": "Розташування, локатор",
+        "gr": "Τοποθεσία, εντοπιστής",
+        "hu": "Hely, helymeghatározó"
     },
     "tbrdg_contime": {
         "en": "Time Connected",
@@ -510,7 +721,11 @@
         "fr": "Temps Connecté",
         "it": "Tempo di Connessione",
         "nl": "Aangesloten tijd",
-        "de": "Verbindungszeit"
+        "de": "Verbindungszeit",
+        "ru": "Время соединения",
+        "ua": "Час підключення",
+        "gr": "Χρόνος σύνδεσης",
+        "hu": "Csatlakozási idő"
     },
     "tbrdg_slot": {
         "en": "Slot",
@@ -519,7 +734,11 @@
         "fr": "Slot",
         "it": "Slot",
         "nl": "Slot",
-        "de": "Slot"
+        "de": "Slot",
+        "ru": "Слот",
+        "ua": "Слот",
+        "gr": "Θέση",
+        "hu": "Slot"
     },
     "tbrdg_src": {
         "en": "Source",
@@ -528,7 +747,11 @@
         "fr": "Source",
         "it": "Sorgente",
         "nl": "Oorsprong",
-        "de": "Quelle"
+        "de": "Quelle",
+        "ru": "Источник",
+        "ua": "Джерело",
+        "gr": "Πηγή",
+        "hu": "Forrás"
     },
     "tbrdg_dst": {
         "en": "Destination",
@@ -537,7 +760,11 @@
         "fr": "Destination",
         "it": "Destinazione",
         "nl": "Bestemming",
-        "de": "Ziel"
+        "de": "Ziel",
+        "ru": "Назначение",
+        "ua": "Призначення",
+        "gr": "Προορισμός",
+        "hu": "Cél"
     },
     "tbrdg_stctg": {
         "en": "Static TG",
@@ -546,7 +773,11 @@
         "fr": "TG Statique",
         "it": "TG Statico",
         "nl": "Statisch TG",
-        "de": "Statischer TG"
+        "de": "Statischer TG",
+        "ru": "Статический TG",
+        "ua": "Статичний TG",
+        "gr": "Στατικός TG",
+        "hu": "Statikus TG"
     },
     "tbrdg_untg": {
         "en": "Unique TG",
@@ -555,7 +786,11 @@
         "fr": "TG Unique",
         "it": "TG Unico",
         "nl": "Alleenstaand TG",
-        "de": "Einzigartiger TG"
+        "de": "Einzigartiger TG",
+        "ru": "Уникальный TG",
+        "ua": "Унікальний TG",
+        "gr": "Μοναδικός TG",
+        "hu": "Egyedi TG"
     },
     "tbrdg_to": {
         "en": "T/O",
@@ -564,7 +799,11 @@
         "fr": "T/O",
         "it": "T/O",
         "nl": "T/O",
-        "de": "T/O"
+        "de": "T/O",
+        "ru": "T/O",
+        "ua": "T/O",
+        "gr": "T/O",
+        "hu": "T/O"
     },
     "tbl_srv": {
         "en": ".: Services :.",
@@ -573,7 +812,11 @@
         "fr": ".: Services :.",
         "it": ".: Servizi :.",
         "nl": ".: Services :.",
-        "de": ".: Dienste :."
+        "de": ".: Dienste :.",
+        "ru": ".: Услуги :.",
+        "ua": ".: Послуги :.",
+        "gr": ".: Υπηρεσίες :.",
+        "hu": ".: Szolgáltatások :."
     },
     "tsrv_service": {
         "en": "Service",
@@ -582,7 +825,11 @@
         "fr": "Service",
         "it": "Servizio",
         "nl": "Service",
-        "de": "Dienst"
+        "de": "Dienst",
+        "ru": "Услуга",
+        "ua": "Послуга",
+        "gr": "Υπηρεσία",
+        "hu": "Szolgáltatás"
     },
     "tsrv_mode": {
         "en": "Mode",
@@ -591,7 +838,11 @@
         "fr": "Mode",
         "it": "Modalità",
         "nl": "Modus",
-        "de": "Modus"
+        "de": "Modus",
+        "ru": "Режим",
+        "ua": "Режим",
+        "gr": "Λειτουργία",
+        "hu": "Mód"
     },
     "tsrv_callsign": {
         "en": "Callsign",
@@ -600,7 +851,11 @@
         "fr": "Indicatif",
         "it": "Indicativo",
         "nl": "Roepnaam",
-        "de": "Rufzeichen"
+        "de": "Rufzeichen",
+        "ru": "Позывной",
+        "ua": "Позивний",
+        "gr": "Κλήση",
+        "hu": "Hívójel"
     },
     "tsrv_id": {
         "en": "ID",
@@ -609,7 +864,11 @@
         "fr": "ID",
         "it": "ID",
         "nl": "ID",
-        "de": "ID"
+        "de": "ID",
+        "ru": "ID",
+        "ua": "ID",
+        "gr": "ID",
+        "hu": "ID"
     },
     "tsrv_info": {
         "en": "Info",
@@ -618,7 +877,11 @@
         "fr": "Info",
         "it": "Informazioni",
         "nl": "Informaties",
-        "de": "Info"
+        "de": "Info",
+        "ru": "Информация",
+        "ua": "Інформація",
+        "gr": "Πληροφορίες",
+        "hu": "Információ"
     },
     "tsrv_contime": {
         "en": "Time Connected",
@@ -627,7 +890,11 @@
         "fr": "Temps Connecté",
         "it": "Tempo di Connessione",
         "nl": "Aangesloten tijd",
-        "de": "Verbindungszeit"
+        "de": "Verbindungszeit",
+        "ru": "Время подключения",
+        "ua": "Час підключення",
+        "gr": "Χρόνος Σύνδεσης",
+        "hu": "Csatlakozási idő"
     },
     "tsrv_trl": {
         "en": "TX/RX/Lost",
@@ -636,7 +903,11 @@
         "fr": "TX/RX/Perdu",
         "it": "TX/RX/Perdita",
         "nl": "TX/RX/Verloren",
-        "de": "TX/RX/Verlust"
+        "de": "TX/RX/Verlust",
+        "ru": "TX/RX/Потери",
+        "ua": "TX/RX/Втрати",
+        "gr": "TX/RX/Χαμένα",
+        "hu": "TX/RX/Elveszett"
     },
     "tsrv_slot": {
         "en": "Slot",
@@ -645,7 +916,11 @@
         "fr": "Slot",
         "it": "Slot",
         "nl": "Slot",
-        "de": "Slot"
+        "de": "Slot",
+        "ru": "Слот",
+        "ua": "Слот",
+        "gr": "Θέση",
+        "hu": "Slot"
     },
     "tsrv_src": {
         "en": "Source",
@@ -654,7 +929,11 @@
         "fr": "Source",
         "it": "Sorgente",
         "nl": "Oorsprong",
-        "de": "Quelle"
+        "de": "Quelle",
+        "ru": "Источник",
+        "ua": "Джерело",
+        "gr": "Πηγή",
+        "hu": "Forrás"
     },
     "tsrv_dst": {
         "en": "Destination",
@@ -663,7 +942,11 @@
         "fr": "Destination",
         "it": "Destinazione",
         "nl": "Bestemming",
-        "de": "Ziel"
+        "de": "Ziel",
+        "ru": "Назначение",
+        "ua": "Призначення",
+        "gr": "Προορισμός",
+        "hu": "Cél"
     },
     "topb": {
         "en": "OpenBridge Status",
@@ -672,7 +955,11 @@
         "fr": "État d'OpenBridge",
         "it": "Stato di OpenBridge",
         "nl": "OpenBrige-Status",
-        "de": "OpenBridge-Status"
+        "de": "OpenBridge-Status",
+        "ru": "Статус OpenBridge",
+        "ua": "Статус OpenBridge",
+        "gr": "Κατάσταση OpenBridge",
+        "hu": "OpenBridge állapot"
     },
     "topb_opb": {
         "en": "OpenBridge",
@@ -681,7 +968,11 @@
         "fr": "OpenBridge",
         "it": "OpenBridge",
         "nl": "OpenBridge",
-        "de": "OpenBridge"
+        "de": "OpenBridge",
+        "ru": "OpenBridge",
+        "ua": "OpenBridge",
+        "gr": "OpenBridge",
+        "hu": "OpenBridge"
     },
     "topb_netid": {
         "en": "Net ID",
@@ -690,7 +981,11 @@
         "fr": "ID Réseau",
         "it": "ID Rete",
         "nl": "Netwerk ID",
-        "de": "Netz-ID"
+        "de": "Netz-ID",
+        "ru": "Сетевой ID",
+        "ua": "ID мережі",
+        "gr": "ID Δικτύου",
+        "hu": "Hálózati ID"
     },
     "topb_act": {
         "en": "Active QSO's",
@@ -699,7 +994,11 @@
         "fr": "QSO Actifs",
         "it": "QSO Attivi",
         "nl": "Actieve QSOs",
-        "de": "Aktive QSOs"
+        "de": "Aktive QSOs",
+        "ru": "Активные QSO",
+        "ua": "Активні QSO",
+        "gr": "Ενεργά QSO",
+        "hu": "Aktív QSO-k"
     },
     "ttptg": {
         "en": "TOP TG's",
@@ -708,7 +1007,11 @@
         "fr": "Top TG's",
         "it": "Top TG's",
         "nl": "Top TG's",
-        "de": "Top TG's"
+        "de": "Top TG's",
+        "ru": "ТОП TG",
+        "ua": "ТОП TG",
+        "gr": "Κορυφαία TG",
+        "hu": "TOP TG-k"
     },
     "ttptg_tgid": {
         "en": "TG ID",
@@ -717,7 +1020,11 @@
         "fr": "ID TG",
         "it": "ID TG",
         "nl": "TG-ID",
-        "de": "TG-ID"
+        "de": "TG-ID",
+        "ru": "TG ID",
+        "ua": "ID TG",
+        "gr": "ID TG",
+        "hu": "TG ID"
     },
     "ttptg_tgname": {
         "en": "Talk Group Name",
@@ -726,7 +1033,11 @@
         "fr": "Nom du Groupe de Discussion",
         "it": "Nome del Talk Group",
         "nl": "Talkgroep-Naam",
-        "de": "Talkgroup-Name"
+        "de": "Talkgroup-Name",
+        "ru": "Название группы обсуждения",
+        "ua": "Назва групи обговорення",
+        "gr": "Όνομα Ομάδας Συζήτησης",
+        "hu": "Talk Group neve"
     },
     "ttptg_tgqs": {
         "en": "Number of QSO's",
@@ -735,7 +1046,12 @@
         "fr": "Nombre de QSO",
         "it": "Numero di QSO",
         "nl": "Aantal QSO's",
-        "de": "Anzahl der QSOs"
+        "de": "Anzahl der QSOs",
+        "ru": "Количество QSO",
+        "ua": "Кількість QSO",
+        "gr": "Αριθμός QSO",
+        "hu": "QSO-k száma"
+
     },
     "ttptg_tottime": {
         "en": "Total QSO Time",
@@ -744,7 +1060,11 @@
         "fr": "Temps Total de QSO",
         "it": "Tempo Totale di QSO",
         "nl": "Totale QSO tijd",
-        "de": "Gesamte QSO-Zeit"
+        "de": "Gesamte QSO-Zeit",
+        "ru": "Общее время QSO",
+        "ua": "Загальний час QSO",
+        "gr": "Συνολικός Χρόνος QSO",
+        "hu": "Összes QSO idő"
     },
     "ttptg_topcall": {
         "en": "Most Seen Callsign",
@@ -753,7 +1073,11 @@
         "fr": "Indicatif le Plus Vu",
         "it": "Indicativo più Visto",
         "nl": "Meest bekeken Roepnaam",
-        "de": "Am häufigsten gesehener Rufzeichen"
+        "de": "Am häufigsten gesehener Rufzeichen",
+        "ru": "Чаще всего встречаемый позывной",
+        "ua": "Найчастіше зустрічається позивний",
+        "gr": "Πιο Συχνό Κάλεσμα",
+        "hu": "Leggyakrabban látott hívójel"
     },
     "tbl_srvrs": {
         "en": "World Servers",
@@ -762,7 +1086,11 @@
         "fr": "Serveurs Mondiaux",
         "it": "Server Mondiali",
         "nl": "Wereldwijde Servers",
-        "de": "Weltweite Server"
+        "de": "Weltweite Server",
+        "ru": "Мировые Серверы",
+        "ua": "Світові Сервери",
+        "gr": "Παγκόσμιοι Διακομιστές",
+        "hu": "Világ Szerverek"
     },
     "tsrvrs_country": {
         "en": "Country",
@@ -771,7 +1099,11 @@
         "fr": "Pays",
         "it": "Paese",
         "nl": "Land",
-        "de": "Land"
+        "de": "Land",
+        "ru": "Страна",
+        "ua": "Країна",
+        "gr": "Χώρα",
+        "hu": "Ország"
     },
     "tsrvrs_dmrid": {
         "en": "ID",
@@ -780,7 +1112,11 @@
         "fr": "ID",
         "it": "ID",
         "nl": "ID",
-        "de": "ID"
+        "de": "ID",
+        "ru": "ID",
+        "ua": "ID",
+        "gr": "ID",
+        "hu": "ID"
     },
     "tsrvrs_ipname": {
         "en": "IP/Name",
@@ -789,7 +1125,11 @@
         "fr": "IP/Nom",
         "it": "IP/Nome",
         "nl": "IP/Naam",
-        "de": "IP/Name"
+        "de": "IP/Name",
+        "ru": "IP/Имя",
+        "ua": "IP/Назва",
+        "gr": "IP/Όνομα",
+        "hu": "IP/Név"
     },
     "tsrvrs_pass": {
         "en": "Password",
@@ -798,7 +1138,11 @@
         "fr": "Mot de passe",
         "it": "Password",
         "nl": "Wachtwoord",
-        "de": "Passwort"
+        "de": "Passwort",
+        "ru": "Пароль",
+        "ua": "Пароль",
+        "gr": "Κωδικός Πρόσβασης",
+        "hu": "Jelszó"
     },
     "tsrvrs_port": {
         "en": "Port",
@@ -807,7 +1151,11 @@
         "fr": "Port",
         "it": "Porta",
         "nl": "Port",
-        "de": "Port"
+        "de": "Port",
+        "ru": "Порт",
+        "ua": "Порт",
+        "gr": "Λιμάνι",
+        "hu": "Port"
     },
     "tsrvrs_status": {
         "en": "Status",
@@ -816,7 +1164,11 @@
         "fr": "Statut",
         "it": "Stato",
         "nl": "Status",
-        "de": "Status"
+        "de": "Status",
+        "ru": "Статус",
+        "ua": "Статус",
+        "gr": "Κατάσταση",
+        "hu": "Állapot"
     },
     "tbl_bridges": {
         "en": "Bridges List",
@@ -825,7 +1177,11 @@
         "fr": "Liste des Ponts",
         "it": "Elenco Ponti",
         "nl": "Bruggenlijst",
-        "de": "Brückenliste"
+        "de": "Brückenliste",
+        "ru": "Список мостов",
+        "ua": "Список мостів",
+        "gr": "Λίστα Γεφυρών",
+        "hu": "Hidak Lista"
     },
     "tbrdgs_country": {
         "en": "Country",
@@ -834,7 +1190,11 @@
         "fr": "Pays",
         "it": "Paese",
         "nl": "Land",
-        "de": "Land"
+        "de": "Land",
+        "ru": "Страна",
+        "ua": "Країна",
+        "gr": "Χώρα",
+        "hu": "Ország"
     },
     "tbrdgs_tg": {
         "en": "TG#",
@@ -843,7 +1203,11 @@
         "fr": "TG#",
         "it": "TG#",
         "nl": "TG#",
-        "de": "TG#"
+        "de": "TG#",
+        "ru": "TG#",
+        "ua": "TG#",
+        "gr": "TG#",
+        "hu": "TG#"
     },
     "tbrdgs_name": {
         "en": "Name",
@@ -852,7 +1216,11 @@
         "fr": "Nom",
         "it": "Nome",
         "nl": "Naam",
-        "de": "Name"
+        "de": "Name",
+        "ru": "Имя",
+        "ua": "Назва",
+        "gr": "Όνομα",
+        "hu": "Név"
     },
     "tbl_tgs": {
         "en": "TalkGroups List",
@@ -861,7 +1229,11 @@
         "fr": "Liste des Groupes de Discussion",
         "it": "Elenco dei TalkGroup",
         "nl": "Talkgroepen-Lijst",
-        "de": "Talkgroup-Liste"
+        "de": "Talkgroup-Liste",
+        "ru": "Список TalkGroups",
+        "ua": "Список TalkGroups",
+        "gr": "Λίστα Ομάδων Συζήτησης",
+        "hu": "TalkGroups Lista"
     },
     "tbltgs_numoftg": {
         "en": "Number of TalkGroups:",
@@ -870,7 +1242,11 @@
         "fr": "Nombre de TalkGroups:",
         "it": "Numero di TalkGroups:",
         "nl": "Aantal TalkGroups:",
-        "de": "Anzahl der TalkGroups:"
+        "de": "Anzahl der TalkGroups:",
+        "ru": "Количество TalkGroups:",
+        "ua": "Кількість TalkGroups:",
+        "gr": "Αριθμός Ομάδων Συζήτησης:",
+        "hu": "TalkGroups Száma:"
     },
     "clc_title": {
         "en": "Options Calculator",
@@ -879,7 +1255,11 @@
         "fr": "Calculateur d'options",
         "it": "Calcolatore di opzioni",
         "nl": "Opties berekenen",
-        "de": "Optionsrechner"
+        "de": "Optionsrechner",
+        "ru": "Калькулятор Опций",
+        "ua": "Калькулятор опцій",
+        "gr": "Υπολογιστής Επιλογών",
+        "hu": "Opciók Kalkulátor"
     },
     "calc_lout": {
         "en": "Logout",
@@ -888,7 +1268,11 @@
         "fr": "Déconnexion",
         "it": "Esci",
         "nl": "Uitloggen",
-        "de": "Abmelden"
+        "de": "Abmelden",
+        "ru": "Выход",
+        "ua": "Вийти",
+        "gr": "Αποσύνδεση",
+        "hu": "Kijelentkezés"
     },
     "calc_type": {
         "en": "Select Type",
@@ -897,7 +1281,11 @@
         "fr": "Sélectionner le type",
         "it": "Seleziona il tipo",
         "nl": "Type selecteer",
-        "de": "Typ auswählen"
+        "de": "Typ auswählen",
+        "ru": "Выберите тип",
+        "ua": "Вибрати тип",
+        "gr": "Επιλέξτε τύπο",
+        "hu": "Válasszon típust"
     },
     "calc_dev": {
         "en": "Select Device",
@@ -906,7 +1294,11 @@
         "fr": "Sélectionner un Appareil",
         "it": "Seleziona Dispositivo",
         "nl": "Kies Apparaat",
-        "de": "Gerät auswählen"
+        "de": "Gerät auswählen",
+        "ru": "Выберите устройство",
+        "ua": "Вибрати пристрій",
+        "gr": "Επιλέξτε συσκευή",
+        "hu": "Válasszon eszközt"
     },
     "calc_addts1": {
         "en": "Add TS1",
@@ -915,7 +1307,11 @@
         "fr": "Ajouter TS1",
         "it": "Aggiungi TS1",
         "nl": "TS1 toevoegen",
-        "de": "TS1 hinzufügen"
+        "de": "TS1 hinzufügen",
+        "ru": "Добавить TS1",
+        "ua": "Додати TS1",
+        "gr": "Προσθήκη TS1",
+        "hu": "TS1 hozzáadása"
     },
     "calc_addts2": {
         "en": "Add TS2",
@@ -924,7 +1320,11 @@
         "fr": "Ajouter TS2",
         "it": "Aggiungi TS2",
         "nl": "TS2 toevoegen",
-        "de": "TS2 hinzufügen"
+        "de": "TS2 hinzufügen",
+        "ru": "Добавить TS2",
+        "ua": "Додати TS2",
+        "gr": "Προσθήκη TS2",
+        "hu": "TS2 hozzáadása"
     },
     "calc_dialtg": {
         "en": "Dial-a-TG:",
@@ -933,7 +1333,11 @@
         "fr": "Composer un TG :",
         "it": "Digita un TG:",
         "nl": "Kies TG:",
-        "de": "Wähle TG:"
+        "de": "Wähle TG:",
+        "ru": "Выберите TG:",
+        "ua": "Вибрати TG:",
+        "gr": "Διαλέξτε TG:",
+        "hu": "TG kiválasztása:"
     },
     "calc_voice": {
         "en": "Voice Identification:",
@@ -942,7 +1346,11 @@
         "fr": "Identification vocale :",
         "it": "Identificazione vocale:",
         "nl": "Stemidentificatie:",
-        "de": "Sprachidentifikation:"
+        "de": "Sprachidentifikation:",
+        "ru": "Идентификация голоса:",
+        "ua": "Ідентифікація голосу:",
+        "gr": "Αναγνώριση φωνής:",
+        "hu": "Hangazonosítás:"
     },
     "calc_voiceon": {
         "en": "On",
@@ -951,7 +1359,11 @@
         "fr": "Activé",
         "it": "Attivo",
         "nl": "In",
-        "de": "Ein"
+        "de": "Ein",
+        "ru": "Включено",
+        "ua": "Увімкнено",
+        "gr": "Ενεργό",
+        "hu": "Be"
     },
     "calc_voiceoff": {
         "en": "Off",
@@ -960,7 +1372,11 @@
         "fr": "Désactivé",
         "it": "Disattivo",
         "nl": "Uit",
-        "de": "Aus"
+        "de": "Aus",
+        "ru": "Выключено",
+        "ua": "Вимкнено",
+        "gr": "Απενεργοποιημένο",
+        "hu": "Ki"
     },
     "calc_voicesrv": {
         "en": "Server default",
@@ -969,7 +1385,11 @@
         "fr": "Serveur par défaut",
         "it": "Predefinito del server",
         "nl": "Standaardserver",
-        "de": "Standardserver"
+        "de": "Standardserver",
+        "ru": "По умолчанию сервера",
+        "ua": "Типове значення сервера",
+        "gr": "Προεπιλογή διακομιστή",
+        "hu": "Alapértelmezett szerver"
     },
     "calc_lang": {
         "en": "Language:",
@@ -978,7 +1398,11 @@
         "fr": "Langue :",
         "it": "Lingua:",
         "nl": "Taal",
-        "de": "Sprache:"
+        "de": "Sprache:",
+        "ru": "Язык:",
+        "ua": "Мова:",
+        "gr": "Γλώσσα:",
+        "hu": "Nyelv:"
     },
     "calc_smode": {
         "en": "Single Mode:",
@@ -987,7 +1411,11 @@
         "fr": "Mode unique :",
         "it": "Modalità singola:",
         "nl": "Enkelvoudige modus:",
-        "de": "Einzelmodus:"
+        "de": "Einzelmodus:",
+        "ru": "Одиночный режим:",
+        "ua": "Одиночний режим:",
+        "gr": "Μοναδική λειτουργία:",
+        "hu": "Egyéni mód:"
     },
     "calc_smodeon": {
         "en": "On",
@@ -996,7 +1424,11 @@
         "fr": "Activé",
         "it": "Attivo",
         "nl": "In",
-        "de": "Ein"
+        "de": "Ein",
+        "ru": "Включено",
+        "ua": "Увімкнено",
+        "gr": "Ενεργό",
+        "hu": "Be"
     },
     "calc_smodeoff": {
         "en": "Off",
@@ -1005,7 +1437,11 @@
         "fr": "Désactivé",
         "it": "Disattivo",
         "nl": "Uit",
-        "de": "Aus"
+        "de": "Aus",
+        "ru": "Выключено",
+        "ua": "Вимкнено",
+        "gr": "Απενεργοποιημένο",
+        "hu": "Ki"
     },
     "calc_smodesrv": {
         "en": "Server default",
@@ -1014,7 +1450,11 @@
         "fr": "Serveur par défaut",
         "it": "Predefinito del server",
         "nl": "Standaardserver",
-        "de": "Standardserver"
+        "de": "Standardserver",
+        "ru": "По умолчанию сервера",
+        "ua": "Типове значення сервера",
+        "gr": "Προεπιλογή διακομιστή",
+        "hu": "Alapértelmezett szerver"
     },
     "calc_tgto": {
         "en": "TG Timeout (min):",
@@ -1023,7 +1463,11 @@
         "fr": "Délai d'expiration du TG (min) :",
         "it": "Timeout del TG (min):",
         "nl": "TG-Timeout (Minuten):",
-        "de": "TG-Timeout (Minuten):"
+        "de": "TG-Timeout (Minuten):",
+        "ru": "Тайм-аут TG (мин):",
+        "ua": "Тайм-аут TG (хв):",
+        "gr": "Χρόνος λήξης TG (λεπτά):",
+        "hu": "TG időtúllépés (p):"
     },
     "calc_copy1": {
         "en": "Copy to Clipboard",
@@ -1032,7 +1476,11 @@
         "fr": "Copier dans le presse-papiers",
         "it": "Copia negli appunti",
         "nl": "In klembord kopiëren",
-        "de": "In Zwischenablage kopieren"
+        "de": "In Zwischenablage kopieren",
+        "ru": "Скопировать в буфер обмена",
+        "ua": "Копіювати в буфер обміну",
+        "gr": "Αντιγραφή στο πρόχειρο",
+        "hu": "Másolás vágólapra"
     },
     "calc_copy2": {
         "en": "Copy to Clipboard",
@@ -1041,7 +1489,11 @@
         "fr": "Copier dans le presse-papiers",
         "it": "Copia negli appunti",
         "nl": "In klembord kopiëren",
-        "de": "In Zwischenablage kopieren"
+        "de": "In Zwischenablage kopieren",
+        "ru": "Скопировать в буфер обмена",
+        "ua": "Копіювати в буфер обміну",
+        "gr": "Αντιγραφή στο πρόχειρο",
+        "hu": "Másolás vágólapra"
     },
     "calc_save": {
         "en": "Save Changes",
@@ -1050,7 +1502,11 @@
         "fr": "Enregistrer les Modifications",
         "it": "Salva Modifiche",
         "nl": "Wijzigingen opslaan",
-        "de": "Änderungen speichern"
+        "de": "Änderungen speichern",
+        "ru": "Сохранить изменения",
+        "ua": "Зберегти зміни",
+        "gr": "Αποθήκευση αλλαγών",
+        "hu": "Változtatások mentése"
     },
     "calc_wait": {
         "en": "Applying settings ...",
@@ -1059,7 +1515,11 @@
         "fr": "Application des paramètres ...",
         "it": "Applicazione delle impostazioni ...",
         "nl": "Instellingen toepassen ...",
-        "de": "Einstellungen werden angewendet ..."
+        "de": "Einstellungen werden angewendet ...",
+        "ru": "Применение настроек ...",
+        "ua": "Застосування налаштувань ...",
+        "gr": "Εφαρμογή ρυθμίσεων ...",
+        "hu": "Beállítások alkalmazása ..."
     },
     "calchlptype": {
         "en": "Duplex Hotspots and Repeaters can use TS1 and/or TS2<br>Simplex Hotspots can only use TS2",
@@ -1068,7 +1528,11 @@
         "fr": "Les hotspots duplex et les répéteurs peuvent utiliser TS1 et/ou TS2<br>Les hotspots simplex ne peuvent utiliser que TS2",
         "it": "Gli hotspot duplex e i ripetitori possono utilizzare TS1 e/o TS2<br>Gli hotspot simplex possono utilizzare solo TS2",
         "nl": "Duplex hotspots en repeaters kunnen TS1 en/of TS2 gebruiken<br>Simplex hotspots kunnen alleen TS2 gebruiken",
-        "de": "Duplex-Hotspots und Repeaters können TS1 und/oder TS2 verwenden<br>Einfachex-Hotspots können nur TS2 verwenden"
+        "de": "Duplex-Hotspots und Repeaters können TS1 und/oder TS2 verwenden<br>Einfachex-Hotspots können nur TS2 verwenden",
+        "ru": "Дуплексные хотспоты и репитеры могут использовать TS1 и/или TS2<br>Простые хотспоты могут использовать только TS2",
+        "ua": "Дуплексні хотспоти та ретранслятори можуть використовувати TS1 і/або TS2<br>Прості хотспоти можуть використовувати лише TS2",
+        "gr": "Οι διπλής κατεύθυνσης hotspots και επαναλήπτες μπορούν να χρησιμοποιούν TS1 και/ή TS2<br>Τα απλά hotspots μπορούν να χρησιμοποιούν μόνο TS2",
+        "hu": "A duplex hotspotok és repeater-ek használhatják a TS1-et és/vagy TS2-t<br>Az egyszerű hotspotok csak a TS2-t használhatják"
     },
     "calchlpts1": {
         "en": "Set Statics you want on Slot 1.<br>You can not have the same Talk Group set as static on Slot 1 or Slot 2.",
@@ -1077,7 +1541,11 @@
         "fr": "Définissez les statiques que vous souhaitez sur la fente 1.<br>Vous ne pouvez pas avoir le même groupe de discussion défini en statique sur la fente 1 ou la fente 2.",
         "it": "Imposta gli statici desiderati sulla Slot 1.<br>Non puoi avere lo stesso gruppo di conversazione impostato come statico sulla Slot 1 o sulla Slot 2.",
         "nl": "Definieer de statische gegevens die u wilt op sleuf 1.<br>U kunt niet dezelfde nieuwsgroep als statisch gedefinieerd hebben op sleuf 1 of sleuf 2.",
-        "de": "Legen Sie die gewünschten Statistiken auf Slot 1 fest.<br>Sie können dieselbe Gesprächsgruppe nicht als statisch auf Slot 1 oder Slot 2 festlegen."
+        "de": "Legen Sie die gewünschten Statistiken auf Slot 1 fest.<br>Sie können dieselbe Gesprächsgruppe nicht als statisch auf Slot 1 oder Slot 2 festlegen.",
+        "ru": "Установите статические группы для Слота 1.<br>Нельзя устанавливать одну и ту же Группу Обсуждения как статическую в Слотах 1 или 2.",
+        "ua": "Встановіть статичні групи для Слота 1.<br>Неможливо мати одну і ту ж Групу Обговорення як статичну в Слотах 1 або 2.",
+        "gr": "Ορίστε τα στατικά που θέλετε στο Slot 1.<br>Δεν μπορείτε να έχετε την ίδια Ομάδα Συζήτησης ως στατική στο Slot 1 ή Slot 2.",
+        "hu": "Állítsa be a statikus beállításokat az 1-es slotra.<br>Ugyanazt a Beszélgetési Csoportot nem lehet statikusnak beállítani az 1-es vagy 2-es sloton."
     },
     "calchlpts2": {
         "en": "Set Statics you want on Slot 2.<br>You can not have the same Talk Group set as static on Slot 1 or Slot 2.",
@@ -1086,7 +1554,11 @@
         "fr": "Définissez les statiques que vous souhaitez sur la fente 2.<br>Vous ne pouvez pas avoir le même groupe de discussion défini en statique sur la fente 1 ou la fente 2.",
         "it": "Imposta gli statici desiderati sulla Slot 2.<br>Non puoi avere lo stesso gruppo di conversazione impostato come statico sulla Slot 1 o sulla Slot 2.",
         "nl": "Definieer de statische gegevens die u wilt op sleuf 2.<br>U kunt niet dezelfde nieuwsgroep als statisch gedefinieerd hebben op slot 1 of slot 2.",
-        "de": "Legen Sie die gewünschten Statistiken auf Slot 2 fest.<br>Sie können dieselbe Gesprächsgruppe nicht als statisch auf Slot 1 oder Slot 2 festlegen."
+        "de": "Legen Sie die gewünschten Statistiken auf Slot 2 fest.<br>Sie können dieselbe Gesprächsgruppe nicht als statisch auf Slot 1 oder Slot 2 festlegen.",
+        "ru": "Установите статические группы для Слота 2.<br>Нельзя устанавливать одну и ту же Группу Обсуждения как статическую в Слотах 1 или 2.",
+        "ua": "Встановіть статичні групи для Слота 2.<br>Неможливо мати одну і ту ж Групу Обговорення як статичну в Слотах 1 або 2.",
+        "gr": "Ορίστε τα στατικά που θέλετε στο Slot 2.<br>Δεν μπορείτε να έχετε την ίδια Ομάδα Συζήτησης ως στατική στο Slot 1 ή Slot 2.",
+        "hu": "Állítsa be a statikus beállításokat a 2-es slotra.<br>Ugyanazt a Beszélgetési Csoportot nem lehet statikusnak beállítani az 1-es vagy 2-es sloton."
     },
     "calchlpdtg": {
         "en": "0=None. Set default Enhanced Talk Groups (Dial-a-TG) TG9 Slot 2.<br>Only One Talk Group can be entered in this section.",
@@ -1095,7 +1567,11 @@
         "fr": "0=Aucun. Définissez les groupes de discussion améliorés par défaut (Dial-a-TG) TG9 Fente 2.<br>Seul un groupe de discussion peut être saisi dans cette section.",
         "it": "0=Nessuno. Imposta i Gruppi di Conversazione Avanzati predefiniti (Dial-a-TG) TG9 Slot 2.<br>In questa sezione può essere inserito solo un Gruppo di Conversazione.",
         "nl": "0=Geen. Standaard verbeterde nieuwsgroepen instellen (Dial-a-TG) TG9 Slot 2.<br>In dit gedeelte kan slechts één nieuwsgroep worden ingevoerd.",
-        "de": "0=Keine. Legen Sie die Standard-Erweiterten Gesprächsgruppen (Dial-a-TG) TG9 Slot 2 fest.<br>Nur eine Gesprächsgruppe kann in diesem Abschnitt eingegeben werden."
+        "de": "0=Keine. Legen Sie die Standard-Erweiterten Gesprächsgruppen (Dial-a-TG) TG9 Slot 2 fest.<br>Nur eine Gesprächsgruppe kann in diesem Abschnitt eingegeben werden.",
+        "ru": "0=Нет. Установите стандартные улучшенные группы обсуждений (Dial-a-TG) TG9 для Слота 2.<br>В этом разделе можно ввести только одну Группу Обсуждения.",
+        "ua": "0=Жоден. Встановіть стандартні покращені групи обговорення (Dial-a-TG) TG9 для Слота 2.<br>В цьому розділі можна ввести тільки одну Групу Обговорення.",
+        "gr": "0=Κανένα. Ορίστε τις προεπιλεγμένες Ενισχυμένες Ομάδες Συζήτησης (Dial-a-TG) TG9 στο Slot 2.<br>Μπορείτε να εισάγετε μόνο μία Ομάδα Συζήτησης σε αυτή την ενότητα.",
+        "hu": "0=Nincs. Állítsa be az alapértelmezett Fejlett Beszélgetési Csoportokat (Dial-a-TG) TG9-re a 2-es sloton.<br>Csak egy Beszélgetési Csoportot adhat meg ebben a részben."
     },
     "calchlpvoice": {
         "en": "15 minute Voice Ident can be set ON or OFF on Time Slot 2.<br>Radios will RX from the network, 'This is CALL-SIGN FreeDMR.'",
@@ -1104,7 +1580,11 @@
         "fr": "L'identification vocale toutes les 15 minutes peut être activée ou désactivée sur la fente 2.<br>Les radios recevront du réseau, 'Ceci est CALL-SIGN FreeDMR.'",
         "it": "L'identificativo vocale ogni 15 minuti può essere attivato o disattivato sulla Slot 2.<br>Le radio riceveranno dalla rete, 'Questa è l'INDICATIVO FreeDMR.'",
         "nl": "Stemidentificatie om de 15 minuten kan worden in- of uitgeschakeld op slot 2.<br>Radio's ontvangen van het netwerk, 'Dit is CALL-SIGN FreeDMR'.",
-        "de": "Die 15-minütige Sprachidentifikation kann auf Slot 2 ein- oder ausgeschaltet werden.<br>Funkgeräte empfangen vom Netzwerk die Nachricht 'Dies ist der Rufzeichen FreeDMR.'"
+        "de": "Die 15-minütige Sprachidentifikation kann auf Slot 2 ein- oder ausgeschaltet werden.<br>Funkgeräte empfangen vom Netzwerk die Nachricht 'Dies ist der Rufzeichen FreeDMR.'",
+        "ru": "Идентификация голоса каждые 15 минут может быть включена или отключена на Слоте 2.<br>Радиостанции будут получать от сети сообщение: 'Это CALL-SIGN FreeDMR.'",
+        "ua": "Ідентифікація голосу кожні 15 хвилин може бути включена або вимкнена на Слоті 2.<br>Радіостанції будуть отримувати від мережі повідомлення: 'Це CALL-SIGN FreeDMR.'",
+        "gr": "Η αναγνώριση φωνής κάθε 15 λεπτά μπορεί να ενεργοποιηθεί ή να απενεργοποιηθεί στο Slot 2.<br>Οι ραδιόφωνα θα λαμβάνουν από το δίκτυο το μήνυμα: 'Αυτό είναι CALL-SIGN FreeDMR.'",
+        "hu": "A 15 percenkénti hangazonosítást be- vagy kikapcsolhatja a 2-es sloton.<br>A rádiók az hálózattól a következő üzenetet kapják: 'Ez a CALL-SIGN FreeDMR.'"
     },
     "calchlplang": {
         "en": "Set the Language VOICE comes back to you as.",
@@ -1113,7 +1593,11 @@
         "fr": "Définissez la langue dans laquelle la VOIX vous répond.",
         "it": "Imposta la lingua in cui la VOCE ti risponde.",
         "nl": "Stel de taal in waarin de VOICE u antwoordt",
-        "de": "Legen Sie die Sprache fest, in der die STIMME Ihnen antwortet."
+        "de": "Legen Sie die Sprache fest, in der die STIMME Ihnen antwortet.",
+        "ru": "Установите язык, на котором VOICE будет вам отвечать.",
+        "ua": "Встановіть мову, на якій VOICE буде вам відповідати.",
+        "gr": "Ορίστε τη γλώσσα στην οποία η VOICE θα σας απαντά.",
+        "hu": "Állítsa be a nyelvet, amelyen a VOICE válaszolni fog önnek."
     },
     "calchlpsmode": {
         "en": "Only allows a single Talk Group to be routed to a Time Slot on a repeater/hotspot at one time.",
@@ -1122,7 +1606,11 @@
         "fr": "Permet uniquement un seul groupe de discussion d'être routé vers une fente temporelle sur un répéteur/hotspot à la fois.",
         "it": "Consente solo un singolo Gruppo di Conversazione di essere instradato su una Slot temporale in un ripetitore/hotspot alla volta.",
         "nl": "Hiermee kan slechts één praatgroep tegelijk naar een tijdslot op een repeater/hotspot worden geleid.",
-        "de": "Erlaubt nur, dass eine einzelne Gesprächsgruppe zu einem Zeitfenster auf einem Repeater/Hotspot geleitet wird."
+        "de": "Erlaubt nur, dass eine einzelne Gesprächsgruppe zu einem Zeitfenster auf einem Repeater/Hotspot geleitet wird.",
+        "ru": "Разрешает маршрутизировать только одну Группу Обсуждения на временной слот на репитере/хотспоте одновременно.",
+        "ua": "Дозволяє маршрутизувати тільки одну Групу Обговорення на тимчасовий слот на ретрансляторі/хотспоті одночасно.",
+        "gr": "Επιτρέπει μόνο μία Ομάδα Συζήτησης να δρομολογείται σε μία Χρονική Θέση σε έναν επαναλήπτη/hotspot ταυτόχρονα.",
+        "hu": "Csak egyetlen Beszélgetési Csoport irányítható egy időslotba egyszerre egy repeater/hotspoton."
     },
     "calchlpstgto": {
         "en": "Time a Talk Group is held active for. Pressing your PTT on a Talk Group reset this timer.<br>You select any number of minutes you like here. But the recommended time is 10 or 5 mins.<br>If setting more than two static to a slot, you might wish to set Timer to 1 or 2 min.",
@@ -1131,7 +1619,11 @@
         "fr": "Durée pendant laquelle un groupe de discussion est maintenu actif. Appuyer sur le PTT d'un groupe de discussion réinitialise cette minuterie.<br>Vous pouvez sélectionner le nombre de minutes que vous souhaitez ici. Mais le temps recommandé est de 10 ou 5 minutes.<br>Si vous configurez plus de deux statiques sur une fente, vous voudrez peut-être régler la minuterie sur 1 ou 2 minutes.",
         "it": "Tempo per cui un Gruppo di Conversazione rimane attivo. Premendo il PTT su un Gruppo di Conversazione si resetta questo timer.<br>Puoi selezionare qui il numero di minuti che desideri. Ma il tempo consigliato è di 10 o 5 minuti.<br>Se stai impostando più di due statici su una slot, potresti desiderare di impostare il timer su 1 o 2 minuti.",
         "nl": "Tijdsduur dat een talkgroep actief wordt gehouden. Door op de PTT van een nieuwsgroep te drukken, wordt deze timer gereset.<br>U kunt hier het aantal minuten dat u wilt selecteren. Maar de aanbevolen tijd is 10 of 5 minuten.<br> Als u meer dan twee statische TG op een slot instelt, wilt u de timer mogelijk op 1 of 2 minuten instellen.",
-        "de": "Zeit, in der eine Gesprächsgruppe aktiv gehalten wird. Durch Drücken der PTT-Taste auf einer Gesprächsgruppe wird dieser Timer zurückgesetzt.<br>Sie können hier beliebig viele Minuten auswählen. Die empfohlene Zeit beträgt jedoch 10 oder 5 Minuten.<br>Wenn Sie mehr als zwei Statische einer Slot zuweisen, möchten Sie möglicherweise den Timer auf 1 oder 2 Minuten einstellen."
+        "de": "Zeit, in der eine Gesprächsgruppe aktiv gehalten wird. Durch Drücken der PTT-Taste auf einer Gesprächsgruppe wird dieser Timer zurückgesetzt.<br>Sie können hier beliebig viele Minuten auswählen. Die empfohlene Zeit beträgt jedoch 10 oder 5 Minuten.<br>Wenn Sie mehr als zwei Statische einer Slot zuweisen, möchten Sie möglicherweise den Timer auf 1 oder 2 Minuten einstellen.",
+        "ru": "Время, в течение которого Группа Обсуждения остается активной. Нажатие вашей PTT на Группу Обсуждения сбрасывает этот таймер.<br>Вы можете выбрать любое количество минут. Рекомендуемое время - 10 или 5 минут.<br>Если вы настраиваете более двух статиков для слота, вы можете захотеть установить таймер на 1 или 2 минуты.",
+        "ua": "Час, протягом якого Група Обговорення залишається активною. Натискання PTT на Групу Обговорення скидає цей таймер.<br>Ви можете вибрати будь-яку кількість хвилин. Рекомендується час - 10 або 5 хвилин.<br>Якщо ви налаштовуєте більше двох статиків для слота, ви можете захотіти встановити таймер на 1 або 2 хвилини.",
+        "gr": "Χρόνος κατά τον οποίο η Ομάδα Συζήτησης παραμένει ενεργή. Η πίεση του PTT σε μία Ομάδα Συζήτησης επαναφέρει αυτό το χρονόμετρο.<br>Μπορείτε να επιλέξετε οποιονδήποτε αριθμό λεπτών. Αλλά ο συνιστώμενος χρόνος είναι 10 ή 5 λεπτά.<br>Εάν ρυθμίζετε περισσότερους από δύο στατικούς για μία θέση, ίσως θελήσετε να ρυθμίσετε το χρονοδιακόπτη σε 1 ή 2 λεπτά.",
+        "hu": "Az idő, ameddig egy Beszélgetési Csoport aktív marad. A PTT gomb megnyomása a Beszélgetési Csoporton visszaállítja ezt a timert.<br>Bármilyen percet beállíthat. Az ajánlott idő 10 vagy 5 perc.<br>Ha több mint két statikus beállítást konfigurál egy slotra, érdemes lehet a timert 1 vagy 2 percre beállítani."
     },
     "sslog_call": {
         "en": "Callsign",
@@ -1140,7 +1632,11 @@
         "fr": "Indicatif",
         "it": "Indicativo",
         "nl": "Roepnaam",
-        "de": "Rufzeichen"
+        "de": "Rufzeichen",
+        "ru": "Позывной",
+        "ua": "Позивний знак",
+        "gr": "Κλήση",
+        "hu": "Hívójel"
     },
     "sslog_pass": {
         "en": "Password",
@@ -1149,7 +1645,11 @@
         "fr": "Mot de passe",
         "it": "Password",
         "nl": "Wachtwoord",
-        "de": "Passwort"
+        "de": "Passwort",
+        "ru": "Пароль",
+        "ua": "Пароль",
+        "gr": "Κωδικός πρόσβασης",
+        "hu": "Jelszó"
     },
     "sslog_login": {
         "en": "Login",
@@ -1158,7 +1658,11 @@
         "fr": "Connexion",
         "it": "Accesso",
         "nl": "Inloggen",
-        "de": "Anmelden"
+        "de": "Anmelden",
+        "ru": "Вход",
+        "ua": "Увійти",
+        "gr": "Σύνδεση",
+        "hu": "Bejelentkezés"
     },
     "sslog_use": {
         "en": "*** USAGE ***",
@@ -1167,7 +1671,11 @@
         "fr": "*** UTILISATION ***",
         "it": "*** USO ***",
         "nl": "*** GEBRUIK ***",
-        "de": "*** VERWENDUNG ***"
+        "de": "*** VERWENDUNG ***",
+        "ru": "*** ИСПОЛЬЗОВАНИЕ ***",
+        "ua": "*** ВИКОРИСТАННЯ ***",
+        "gr": "*** ΧΡΗΣΗ ***",
+        "hu": "*** HASZNÁLAT ***"
     },
     "sslog_instruc": {
         "en": "In order to manage your device with Self Service, you may need to remove all options in your device's software and set your password using PASS=your_password.",
@@ -1176,6 +1684,10 @@
         "fr": "Pour gérer votre appareil avec Self Service, vous devrez peut-être supprimer toutes les options dans le logiciel de votre appareil et définir votre mot de passe en utilisant PASS=your_password.",
         "it": "Per gestire il tuo dispositivo con Self Service, potresti dover rimuovere tutte le opzioni nel software del tuo dispositivo e impostare la tua password utilizzando PASS=your_password.",
         "nl": "Om uw apparaat te beheren met Self Service, moet u mogelijk alle opties in de software van uw apparaat verwijderen en uw wachtwoord instellen met PASS=your_password",
-        "de": "Um Ihr Gerät mit Self Service zu verwalten, müssen Sie möglicherweise alle Optionen in der Software Ihres Geräts entfernen und Ihr Passwort mit PASS=your_password festlegen."
+        "de": "Um Ihr Gerät mit Self Service zu verwalten, müssen Sie möglicherweise alle Optionen in der Software Ihres Geräts entfernen und Ihr Passwort mit PASS=your_password festlegen.",
+        "ru": "Для управления вашим устройством с помощью Self Service, вам может потребоваться удалить все опции в программном обеспечении вашего устройства и установить свой пароль, используя PASS=ваш_пароль.",
+        "ua": "Для управління вашим пристроєм за допомогою Self Service, можливо, вам знадобиться видалити всі опції у програмному забезпеченні вашого пристрою та встановити свій пароль, використовуючи PASS=ваш_пароль.",
+        "gr": "Για να διαχειριστείτε τη συσκευή σας με το Self Service, ίσως χρειαστεί να αφαιρέσετε όλες τις επιλογές στο λογισμικό της συσκευής σας και να ορίσετε τον κωδικό πρόσβασής σας χρησιμοποιώντας PASS=το_σας_κωδικό.",
+        "hu": "Az önálló szolgáltatással történő eszközkezeléshez előfordulhat, hogy el kell távolítania az összes lehetőséget az eszköze szoftveréből, és be kell állítania a jelszavát a PASS=az_ön_jelszava használatával."
     }
 }
