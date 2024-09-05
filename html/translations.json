@@ -1574,17 +1574,17 @@
         "hu": "0=Nincs. Állítsa be az alapértelmezett Fejlett Beszélgetési Csoportokat (Dial-a-TG) TG9-re a 2-es sloton.<br>Csak egy Beszélgetési Csoportot adhat meg ebben a részben."
     },
     "calchlpvoice": {
-        "en": "15 minute Voice Ident can be set ON or OFF on Time Slot 2.<br>Radios will RX from the network, 'This is CALL-SIGN FreeDMR.'",
-        "pt": "A identificação de voz a cada 15 minutos pode ser ativada ou desativada no Time Slot 2.<br>Os rádios receberão da rede a mensagem: 'Este é o INDICATIVO FreeDMR.'",
-        "es": "Se puede activar o desactivar la identificación de voz cada 15 minutos en la Ranura 2.<br>Las radios recibirán de la red, 'Este es CALL-SIGN FreeDMR.'",
-        "fr": "L'identification vocale toutes les 15 minutes peut être activée ou désactivée sur la fente 2.<br>Les radios recevront du réseau, 'Ceci est CALL-SIGN FreeDMR.'",
-        "it": "L'identificativo vocale ogni 15 minuti può essere attivato o disattivato sulla Slot 2.<br>Le radio riceveranno dalla rete, 'Questa è l'INDICATIVO FreeDMR.'",
-        "nl": "Stemidentificatie om de 15 minuten kan worden in- of uitgeschakeld op slot 2.<br>Radio's ontvangen van het netwerk, 'Dit is CALL-SIGN FreeDMR'.",
-        "de": "Die 15-minütige Sprachidentifikation kann auf Slot 2 ein- oder ausgeschaltet werden.<br>Funkgeräte empfangen vom Netzwerk die Nachricht 'Dies ist der Rufzeichen FreeDMR.'",
-        "ru": "Идентификация голоса каждые 15 минут может быть включена или отключена на Слоте 2.<br>Радиостанции будут получать от сети сообщение: 'Это CALL-SIGN FreeDMR.'",
-        "ua": "Ідентифікація голосу кожні 15 хвилин може бути включена або вимкнена на Слоті 2.<br>Радіостанції будуть отримувати від мережі повідомлення: 'Це CALL-SIGN FreeDMR.'",
-        "gr": "Η αναγνώριση φωνής κάθε 15 λεπτά μπορεί να ενεργοποιηθεί ή να απενεργοποιηθεί στο Slot 2.<br>Οι ραδιόφωνα θα λαμβάνουν από το δίκτυο το μήνυμα: 'Αυτό είναι CALL-SIGN FreeDMR.'",
-        "hu": "A 15 percenkénti hangazonosítást be- vagy kikapcsolhatja a 2-es sloton.<br>A rádiók az hálózattól a következő üzenetet kapják: 'Ez a CALL-SIGN FreeDMR.'"
+        "en": "15 minute Voice Ident can be set ON or OFF on Time Slot 2.<br>Radios will RX from the network, 'This is CALL-SIGN ADN Sytems.'",
+        "pt": "A identificação de voz a cada 15 minutos pode ser ativada ou desativada no Time Slot 2.<br>Os rádios receberão da rede a mensagem: 'Este é o INDICATIVO ADN Sytems.'",
+        "es": "Se puede activar o desactivar la identificación de voz cada 15 minutos en la Ranura 2.<br>Las radios recibirán de la red, 'Este es CALL-SIGN ADN Sytems.'",
+        "fr": "L'identification vocale toutes les 15 minutes peut être activée ou désactivée sur la fente 2.<br>Les radios recevront du réseau, 'Ceci est CALL-SIGN ADN Sytems.'",
+        "it": "L'identificativo vocale ogni 15 minuti può essere attivato o disattivato sulla Slot 2.<br>Le radio riceveranno dalla rete, 'Questa è l'INDICATIVO ADN Sytems.'",
+        "nl": "Stemidentificatie om de 15 minuten kan worden in- of uitgeschakeld op slot 2.<br>Radio's ontvangen van het netwerk, 'Dit is CALL-SIGN ADN Sytems'.",
+        "de": "Die 15-minütige Sprachidentifikation kann auf Slot 2 ein- oder ausgeschaltet werden.<br>Funkgeräte empfangen vom Netzwerk die Nachricht 'Dies ist der Rufzeichen ADN Sytems.'",
+        "ru": "Идентификация голоса каждые 15 минут может быть включена или отключена на Слоте 2.<br>Радиостанции будут получать от сети сообщение: 'Это CALL-SIGN ADN Sytems.'",
+        "ua": "Ідентифікація голосу кожні 15 хвилин може бути включена або вимкнена на Слоті 2.<br>Радіостанції будуть отримувати від мережі повідомлення: 'Це CALL-SIGN ADN Sytems.'",
+        "gr": "Η αναγνώριση φωνής κάθε 15 λεπτά μπορεί να ενεργοποιηθεί ή να απενεργοποιηθεί στο Slot 2.<br>Οι ραδιόφωνα θα λαμβάνουν από το δίκτυο το μήνυμα: 'Αυτό είναι CALL-SIGN ADN Sytems.'",
+        "hu": "A 15 percenkénti hangazonosítást be- vagy kikapcsolhatja a 2-es sloton.<br>A rádiók az hálózattól a következő üzenetet kapják: 'Ez a CALL-SIGN ADN Sytems.'"
     },
     "calchlplang": {
         "en": "Set the Language VOICE comes back to you as.",
