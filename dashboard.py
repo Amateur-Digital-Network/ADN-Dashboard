@@ -81,8 +81,7 @@ CONF = mk_config("dashboard.cfg")
 
 # Global Variables:
 CONFIG = {}
-# Removed from config
-BRIDGES_INC = False
+
 # Number of rows showed on the lastheard log page
 LASTHEARD_LOG_ROWS = 70
 CTABLE = {
@@ -104,12 +103,18 @@ GROUPS = {
     "all_clients": {},
     "main": {},
     "bridge": {},
-    "lnksys": {},
     "opb": {},
     "statictg":{},
     "log":{},
     "lsthrd_log":{},
-    "tgcount":{}
+    "tgcount":{},
+    "stats":{},
+    "activity":{},
+    "repeaters":{},
+    "brdg":{},
+    "hotspots":{},
+    "peers":{},
+    "footer":{}
     }
 
 peer_ids = {}
@@ -220,6 +225,16 @@ def update_table(_path, _file, _url, _stale, _table):
     except Exception as err:
         logger.error(f"update_table: {err}, {type(err)}")
 
+#
+# UPDATE Database Tables from CTABLE
+#
+@inlineCallbacks
+def initialize_ctable_to_db():
+    yield db_conn.export_ctable_to_db(CTABLE)
+
+@inlineCallbacks
+def cleanup_old_database_entries():
+    yield db_conn.clean_old_entries()
 
 def update_local(_table=None):
     updt_files = []
@@ -518,8 +533,7 @@ def build_hblink_table(_config, _stats_table):
                     add_hb_peer(_hbp_data["PEERS"][_peer], _stats_table["MASTERS"][_hbp]["PEERS"], _peer)
 
             # Process Peer Systems
-            elif (_hbp_data["MODE"] == "XLXPEER" or _hbp_data["MODE"] == "PEER"
-                  and CONF["GLOBAL"]["PR_INC"]):
+            elif (_hbp_data["MODE"] == "XLXPEER" or _hbp_data["MODE"] == "PEER"):
                 _stats_table["PEERS"][_hbp] = {}
                 _stats_table["PEERS"][_hbp]["MODE"] = _hbp_data["MODE"]
 
@@ -720,22 +734,35 @@ def build_stats():
     if CONFIG:
         if GROUPS["main"]:
             render_fromdb("last_heard", CONF["GLOBAL"]["LH_ROWS"])
-        if GROUPS["lnksys"]:
-            lnksys = "c" + ctemplate.render(_table=CTABLE, emaster=CONF["GLOBAL"]["EMPTY_MASTERS"])
-            dashboard_server.broadcast(lnksys, "lnksys")
         if GROUPS["opb"]:
-            opb = "o" + otemplate.render(_table=CTABLE,dbridges=BRIDGES_INC)
+            opb = "o" + otemplate.render(_table=CTABLE)
             dashboard_server.broadcast(opb, "opb")
         if GROUPS["statictg"]:
-            statictg = "s" + stemplate.render(_table=CTABLE, emaster=CONF["GLOBAL"]["EMPTY_MASTERS"])
+            statictg = "s" + stemplate.render(_table=CTABLE, emaster=False)
             dashboard_server.broadcast(statictg, "statictg")
         if GROUPS["lsthrd_log"]:
             render_fromdb("lstheard_log", LASTHEARD_LOG_ROWS)
-
-    if BRIDGES and BRIDGES_INC:
-        if GROUPS["bridge"]:
-            bridges = "b" + btemplate.render(_table=BTABLE,dbridges=BRIDGES_INC)
-            dashboard_server.broadcast(bridges, "bridge")
+        if GROUPS["stats"]:
+            stats = "x" + xtemplate.render(_table=CTABLE, emaster=False)
+            dashboard_server.broadcast(stats, "stats")
+        if GROUPS["activity"]:
+            activity = "a" + atemplate.render(_table=CTABLE, emaster=False)
+            dashboard_server.broadcast(activity, "activity")
+        if GROUPS["repeaters"]:
+            repeaters = "r" + rtemplate.render(_table=CTABLE, emaster=False)
+            dashboard_server.broadcast(repeaters, "repeaters")
+        if GROUPS["brdg"]:
+            brdg = "z" + ztemplate.render(_table=CTABLE, emaster=False)
+            dashboard_server.broadcast(brdg, "brdg")
+        if GROUPS["hotspots"]:
+            hotspots = "h" + htemplate.render(_table=CTABLE, emaster=False)
+            dashboard_server.broadcast(hotspots, "hotspots")
+        if GROUPS["peers"]:
+            peers = "p" + ptemplate.render(_table=CTABLE, emaster=False)
+            dashboard_server.broadcast(peers, "peers")
+        if GROUPS["footer"]:
+            footer = "f" + ftemplate.render(_table=CTABLE, emaster=False)
+            dashboard_server.broadcast(footer, "footer")
     build_time = time()
 
 
@@ -948,8 +975,6 @@ def process_message(_bmessage):
         logger.debug("got BRIDGE_SND opcode")
         BRIDGES = load_dictionary(_bmessage)
         BRIDGES_RX = strftime("%Y-%m-%d %H:%M:%S", localtime(time()))
-        if BRIDGES_INC:
-            BTABLE["BRIDGES"] = build_bridge_table(BRIDGES)
         build_tgstats()
 
     elif opcode == OPCODE["LINK_EVENT"]:
@@ -961,7 +986,7 @@ def process_message(_bmessage):
         # Import data from DB
         db2dict(int(p[6]), "subscriber_ids")
         db2dict(int(p[8]), "talkgroup_ids")
-        if p[0] == "GROUP VOICE":
+        if p[0] == "GROUP VOICE" or p[0] == "PRIVATE VOICE":
             rts_update(p)
             if p[2] == "TX" or p[5] in CONF["OPB_FLTR"]["OPB_FILTER"]:
                 return None
@@ -1116,29 +1141,39 @@ class dashboard(WebSocketServerProtocol):
                 if group not in GROUPS:
                     continue
                 self.factory.register(self, group)
-                if group == "bridge":
-                    if BRIDGES and BRIDGES_INC:
-                        self.sendMessage(
-                            ("b" + btemplate.render(
-                                _table=BTABLE,dbridges=BRIDGES_INC)).encode("utf-8"))
-                elif group == "lnksys":
+                if group == "opb":
                     self.sendMessage(
-                        ("c" + ctemplate.render(
-                            _table=CTABLE,emaster=CONF["GLOBAL"]["EMPTY_MASTERS"])).encode("utf-8"))
-                elif group == "opb":
-                    self.sendMessage(
-                        ("o" + otemplate.render(
-                            _table=CTABLE,dbridges=BRIDGES_INC)).encode("utf-8"))
+                        ("o" + otemplate.render(_table=CTABLE)).encode("utf-8"))
                 elif group == "main":
                     render_fromdb("last_heard", CONF["GLOBAL"]["LH_ROWS"], self)
                 elif group == "statictg":
                     self.sendMessage(
-                        ("s" + stemplate.render(
-                            _table=CTABLE, emaster=CONF["GLOBAL"]["EMPTY_MASTERS"])).encode("utf-8"))
+                        ("s" + stemplate.render(_table=CTABLE, emaster=False)).encode("utf-8"))
                 elif group == "lsthrd_log":
                     render_fromdb("lstheard_log", LASTHEARD_LOG_ROWS, self)
                 elif group == "tgcount":
                     render_fromdb("tgcount", CONF["GLOBAL"]["TGC_ROWS"], self)
+                elif group == "stats":
+                    self.sendMessage(
+                        ("x" + xtemplate.render(_table=CTABLE,emaster=False)).encode("utf-8"))
+                elif group == "activity":
+                    self.sendMessage(
+                        ("a" + atemplate.render(_table=CTABLE,emaster=False)).encode("utf-8"))
+                elif group == "repeaters":
+                    self.sendMessage(
+                        ("r" + rtemplate.render(_table=CTABLE,emaster=False)).encode("utf-8"))
+                elif group == "brdg":
+                    self.sendMessage(
+                        ("z" + ztemplate.render(_table=CTABLE,emaster=False)).encode("utf-8"))
+                elif group == "hotspots":
+                    self.sendMessage(
+                        ("h" + htemplate.render(_table=CTABLE,emaster=False)).encode("utf-8"))
+                elif group == "peers":
+                    self.sendMessage(
+                        ("p" + ptemplate.render(_table=CTABLE,emaster=False)).encode("utf-8"))
+                elif group == "footer":
+                    self.sendMessage(
+                        ("f" + ftemplate.render(_table=CTABLE,emaster=False)).encode("utf-8"))
                 elif group == "log":
                     for _message in LOGBUF:
                         if _message:
@@ -1148,7 +1183,6 @@ class dashboard(WebSocketServerProtocol):
     def onClose(self, wasClean, code, reason):
         self.factory.unregister(self)
         logger.info(f"WebSocket connection closed: {reason}")
-
 
 class dashboardFactory(WebSocketServerFactory):
     def __init__(self, url):
@@ -1227,7 +1261,7 @@ if __name__ == "__main__":
     logger.info("dashboard.py starting up")
     logger.info("\n\n\tCopyright (c) 2016-2022\n\tThe Regents of the K0USY Group. All rights "
                 "reserved.\n\n\tPython 3 port:\n\t2019 Steve Miller, KC1AWV <smiller@kc1awv.net>"
-                "\n\n\tDashboard by CS8ABG 2024\n\n")
+                "\n\n\tDashboard by CS8ABG 2025\n\n")
 
     # Create an instance of DashDB
     db_conn = DashDB("html/db/dashboard.db")
@@ -1240,12 +1274,17 @@ if __name__ == "__main__":
 
     # define tables template
     itemplate = env.get_template("main_table.html")
-    ctemplate = env.get_template("lnksys_table.html")
     otemplate = env.get_template("opb_table.html")
-    btemplate = env.get_template("bridge_table.html")
     stemplate = env.get_template("statictg_table.html")
     htemplate = env.get_template("lasthrd_log.html")
     ttemplate = env.get_template("tgcount_table.html")
+    xtemplate = env.get_template("stats_boxes.html")
+    atemplate = env.get_template("activity_box.html")
+    rtemplate = env.get_template("repeaters_table.html")
+    ztemplate = env.get_template("brdg_table.html")
+    htemplate = env.get_template("hotspots_table.html")
+    ptemplate = env.get_template("peers_table.html")
+    ftemplate = env.get_template("footer_boxes.html")
 
     # Start update loop
     update_stats = task.LoopingCall(build_stats)
@@ -1267,6 +1306,13 @@ if __name__ == "__main__":
     # Clean DB tables loop
     cdb_loop = task.LoopingCall(cleaning_loop)
     cdb_loop.start(900, now=False).addErrback(error_hdl)
+
+    # Update database tables from CTABLE
+    update_db = task.LoopingCall(initialize_ctable_to_db)
+    update_db.start(10).addErrback(error_hdl)
+    # Clean old entries every 60 seconds
+    clean_db = task.LoopingCall(cleanup_old_database_entries)
+    clean_db.start(60).addErrback(error_hdl) 
 
     # Update local files at start
     reactor.callLater(3, update_local)

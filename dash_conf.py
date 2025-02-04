@@ -57,9 +57,7 @@ def mk_config(cfg_file):
         for section in conf:
             if section == "GLOBAL":
                 CONF["GLOBAL"] = {
-                    "PR_INC": conf.getboolean(section, "HOMEBREW_INC", fallback=True),
                     "LH_ROWS": conf.getint(section, "LASTHEARD_ROWS", fallback=10),
-                    "EMPTY_MASTERS": conf.getboolean(section, "EMPTY_MASTERS", fallback=False),
                     "TGC_ROWS": conf.getint(section, "TGCOUNT_ROWS", fallback=20)
                     }
             elif section == "SERVER CONNECTION":
@@ -105,7 +103,7 @@ def mk_config(cfg_file):
                     "SSL_PKEY": conf.get(section, "SSL_PRIVATEKEY", fallback="key.pem"),
                     "P2F_PKEY": Path(conf["WEBSOCKET SERVER"]["SSL_PATH"],
                                      conf["WEBSOCKET SERVER"]["SSL_PRIVATEKEY"]),
-                    "FREQ": conf.getint(section, "FREQUENCY", fallback=5),
+                    "FREQ": conf.getint(section, "FREQUENCY", fallback=1),
                     "CLT_TO": conf.getint(section, "CLIENT_TIMEOUT", fallback=0)
                     }
             elif section == "DEFAULT":
