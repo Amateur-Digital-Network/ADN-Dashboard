@@ -1,0 +1,67 @@
+{% if _table['MASTERS']|length > 0 %}
+
+  {% set counts = namespace(repeaters=0, hotspots=0, bridges=0, peers=0, opbs=0, stbox=0, colsz=0) %}
+
+  {% for _master in _table['MASTERS'] %}
+      {% for _client, _cdata in _table['MASTERS'][_master]['PEERS'].items() %}
+          {% if _client|string|length == 6 and _cdata['RX_FREQ'] != 'N/A' and _cdata['TX_FREQ'] != 'N/A' %}
+              {% set counts.repeaters = counts.repeaters + 1 %}
+          {% endif %}
+          {% if _client|string|length >= 7 and _cdata['RX_FREQ'] != 'N/A' and _cdata['TX_FREQ'] != 'N/A' %}
+              {% set counts.hotspots = counts.hotspots + 1 %}
+          {% endif %}
+          {% if _cdata['RX_FREQ'] == 'N/A' and _cdata['TX_FREQ'] == 'N/A' %}
+              {% set counts.bridges = counts.bridges + 1 %}
+          {% endif %}
+      {% endfor %}
+  {% endfor %}
+  {% for _peer, _pdata in _table['PEERS'].items() %}
+      {% if _pdata[1]['TS'] == True or _pdata[2]['TS'] == True %}
+        {% set counts.peers = counts.peers + 1 %}
+      {% endif %}
+  {% endfor %}
+
+  {% if _table['OPENBRIDGES']|length > 0 %}
+      {% for _openbridge in _table['OPENBRIDGES'] %}
+          {% set counts.opbs = counts.opbs + 1 %}
+      {% endfor %}
+  {% endif %}
+
+  {% set counts.stbox = (counts.repeaters > 0) + (counts.hotspots > 0) + (counts.bridges > 0) + (counts.opbs > 0) + (counts.peers > 0) %}
+  {% set colsz_map = {5: 2, 4: 3, 3: 4, 2: 6, 1: 6} %}
+  {% set colsz = colsz_map[counts.stbox] %}
+
+  <div class="row justify-content-center">
+    {% set boxes = [
+      {'count': counts.repeaters, 'color': 'bg-success', 'icon': 'ion-radio-waves', 'id': 'smb_rptr', 'label': 'Repeaters'},
+      {'count': counts.hotspots, 'color': 'bg-warning', 'icon': 'ion-ios-people', 'id': 'smb_htspts', 'label': 'Hotspots'},
+      {'count': counts.bridges, 'color': 'bg-danger', 'icon': 'ion-arrow-swap', 'id': 'smb_brdg', 'label': 'Bridges'},
+      {'count': counts.peers, 'color': 'bg-secondary', 'icon': 'ion-asterisk', 'id': 'smb_peers', 'label': 'Peers'},
+      {'count': counts.opbs, 'color': 'bg-info', 'icon': 'ion-shuffle', 'id': 'topb_opb', 'label': 'Open Bridges'}
+    ] %}
+    
+    {% for box in boxes %}
+      {% if box.count > 0 %}
+      <div class="col-lg-{{ colsz }} col-6">
+        <div class="small-box {{ box.color }}">
+          <div class="inner">
+            <h3>{{ box.count }}</h3>
+            <p id="{{ box.id }}">{{ box.label }}</p>
+          </div>
+          <div class="icon">
+            <i class="ion {{ box.icon }}"></i>
+          </div>
+          <!-- <a href="index.php?p={{ box.label|lower }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% else %}
+<div class="row justify-content-center">
+  <div class="flex-column justify-content-center align-items-center">
+    <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+    <span class="info-box-text" id="pre_wait"></span>
+  </div>
+</div>
+{% endif %}

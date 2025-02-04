@@ -1,0 +1,158 @@
+{% if _table['MASTERS']|length > 0 %}
+    {% set counts = namespace(con=0, repeaters=0, hotspots=0, bridges=0, opbs=0) %}
+
+    {% for _master in _table['MASTERS'] %}
+        {% for _client, _cdata in _table['MASTERS'][_master]['PEERS'].items() %}
+            {% if _client|string|length == 6 and _cdata['RX_FREQ'] != 'N/A' and _cdata['TX_FREQ'] != 'N/A' %}
+                {% set counts.repeaters = counts.repeaters + 1 %}
+            {% endif %}
+            {% if _client|string|length >= 7 and _cdata['RX_FREQ'] != 'N/A' and _cdata['TX_FREQ'] != 'N/A' %}
+                {% set counts.hotspots = counts.hotspots + 1 %}
+            {% endif %}
+            {% if _cdata['RX_FREQ'] == 'N/A' and _cdata['TX_FREQ'] == 'N/A' %}
+                {% set counts.bridges = counts.bridges + 1 %}
+            {% endif %}
+            {% if _cdata[1]['TS'] == True or _cdata[2]['TS'] == True %}
+                {% if _cdata[1]['TRX'] == "RX" %}
+                    {% set counts.con = counts.con + 1 %}
+                {% endif %}
+                {% if _cdata[2]['TRX'] == "RX" %}
+                    {% set counts.con = counts.con + 1 %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% for _peer, _pdata in _table['PEERS'].items() %}
+        {% if _pdata[1]['TS'] == True or _pdata[2]['TS'] == True %}
+            {% if _pdata[1]['TRX'] == "RX" %}
+                {% set counts.con = counts.con + 1 %}
+            {% endif %}
+            {% if _pdata[2]['TRX'] == "RX" %}
+                {% set counts.con = counts.con + 1 %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {% if _table['OPENBRIDGES']|length > 0 %}
+        {% for _openbridge in _table['OPENBRIDGES'] %}
+            {% set counts.opbs = counts.opbs + 1 %}
+            {% set rx = namespace(value=0) %}
+            {% if _table['OPENBRIDGES'][_openbridge]['STREAMS']|length > 0 %}
+                {% for entry in _table['OPENBRIDGES'][_openbridge]['STREAMS'] if _table['OPENBRIDGES'][_openbridge]['STREAMS'][entry][0] == 'RX' %}
+                    {% set rx.value = 1 %}
+                {% endfor %}
+                {% if rx.value == 1 %}
+                    {% for entry in _table['OPENBRIDGES'][_openbridge]['STREAMS'] if _table['OPENBRIDGES'][_openbridge]['STREAMS'][entry][0] == 'RX' %}
+                        {% set counts.con = counts.con + 1 %}
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <!-- Connected systems -->
+    <div class="row justify-content-center">
+        {% if counts.repeaters > 0 %}
+        <div class="col-md-4 col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" id="crd_rptrs"></h3>
+                </div>
+                <div class="card-body">
+                    <div class="col">
+                        {% for _master in _table['MASTERS'] %}
+                            {% if _table['MASTERS'][_master]['PEERS']|length >0 %}
+                                {% for _client, _cdata in _table['MASTERS'][_master]['PEERS'].items() %}
+                                    {% if _client|string|length == 6 and  _cdata['RX_FREQ'] != 'N/A' and _cdata['TX_FREQ'] != 'N/A' %} <a target="_blank" href="https://qrz.com/db/{{_cdata['CALLSIGN']}}"
+                        class="badge badge-pill badge-success" style="width: 56px;" data-toggle="tooltip" data-placement="top"
+                        title="
+ID DMR: {{ _client }}
+{% if _cdata['RX_FREQ'] == 'N/A' and _cdata['TX_FREQ'] == 'N/A' %}Tipo: Rede IP{% else %}Tipo: {{ _cdata['SLOTS'] }}
+TX: {{_cdata['TX_FREQ'] }}
+RX: {{_cdata['RX_FREQ'] }}
+TS1: {{ _cdata['TS1_STATIC']|join(', ') }}
+TS2: {{ _cdata['TS2_STATIC']|join(', ') }}{% endif %}
+Equipamento: {{_cdata['PACKAGE_ID'] }}
+Software: {{_cdata['SOFTWARE_ID'] }}
+Info: {{_cdata['LOCATION']}}
+Sistema: {{_master}}
+Tempo Conetado: {{ _cdata['CONNECTED'] }}"><b>{{_cdata['CALLSIGN']}}</b></a>&nbsp;
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if counts.hotspots > 0 %}
+        <div class="col-md-4 col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" id="crd_htspts"></h3>
+                </div>
+                <div class="card-body">
+                    <div class="col">
+                        {% for _master in _table['MASTERS'] %}
+                            {% if _table['MASTERS'][_master]['PEERS']|length >0 %}
+                                {% for _client, _cdata in _table['MASTERS'][_master]['PEERS'].items() %}
+                                    {% if _client|string|length >= 7 and  _cdata['RX_FREQ'] != 'N/A' and _cdata['TX_FREQ'] != 'N/A' %}
+                        <a target="_blank" href="https://qrz.com/db/{{_cdata['CALLSIGN']}}" class="badge badge-pill badge-success"
+                        style="width: 56px;" data-toggle="tooltip" data-placement="top" data-html="true" title="
+ID DMR: {{ _client }}
+{% if _cdata['RX_FREQ'] == 'N/A' and _cdata['TX_FREQ'] == 'N/A' %}Tipo: Rede IP{% else %}Tipo: {{ _cdata['SLOTS'] }}
+TX: {{_cdata['TX_FREQ'] }}
+RX: {{_cdata['RX_FREQ'] }}
+TS1: {{ _cdata['TS1_STATIC']|join(', ') }}
+TS2: {{ _cdata['TS2_STATIC']|join(', ') }}{% endif %}
+Equipamento: {{_cdata['PACKAGE_ID'] }}
+Software: {{_cdata['SOFTWARE_ID'] }}
+Info: {{_cdata['LOCATION']}}
+Sistema: {{_master}}
+Tempo Conetado: {{ _cdata['CONNECTED'] }}"><b>{{_cdata['CALLSIGN']}}</b></a>&nbsp;
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if counts.bridges > 0 %}
+        <div class="col-md-4 col-12">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title" id="crd_brdg"></h3>
+                </div>
+                <div class="card-body">
+                    <div class="col">
+                        {% for _master in _table['MASTERS'] %}
+                            {% if _table['MASTERS'][_master]['PEERS']|length >0 %}
+                                {% for _client, _cdata in _table['MASTERS'][_master]['PEERS'].items() %}
+                                    {% if _cdata['RX_FREQ'] == 'N/A' and _cdata['TX_FREQ'] == 'N/A' %}
+                        <a href="#" class="badge badge-pill badge-success" style="width: 56px;" data-toggle="tooltip"
+                        data-placement="top" data-html="true" title="
+ID DMR: {{ _client }}
+{% if _cdata['RX_FREQ'] == 'N/A' and _cdata['TX_FREQ'] == 'N/A' %}Tipo: Rede IP{% else %}Tipo: {{ _cdata['SLOTS'] }}
+TX: {{_cdata['TX_FREQ'] }}
+RX: {{_cdata['RX_FREQ'] }}
+TS1: {{ _cdata['TS1_STATIC']|join(', ') }}
+TS2: {{ _cdata['TS2_STATIC']|join(', ') }}{% endif %}
+Equipamento: {{_cdata['PACKAGE_ID'] }}
+Software: {{_cdata['SOFTWARE_ID'] }}
+Info: {{_cdata['LOCATION']}}
+Sistema: {{_master}}
+Tempo Conetado: {{ _cdata['CONNECTED'] }}"><b>{{_cdata['CALLSIGN']}}</b></a>&nbsp;
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endif %}

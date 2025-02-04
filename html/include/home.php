@@ -1,5 +1,8 @@
 <div class="container">
-    <p id="main"></p>
+  <p id="stats"></p>
+  <p id="activity"></p>
+  <p id="main"></p>
+  <p id="footer"></p>
 </div>
 <!-- this checks if id="main" as content -->
 <script>
@@ -10,10 +13,10 @@
   function checkMainContent() {
     var mainElement = document.getElementById('main');
     if (mainElement && mainElement.innerHTML.trim() !== '') {
-      // console.log('OKAY');
+      // Content exists, do nothing
     } else {
-      //console.log('NotOK');
       location.reload();
     }
   }
+
 </script>

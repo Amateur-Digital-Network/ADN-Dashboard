@@ -10,7 +10,7 @@
             $footer1Value = $config['DASHBOARD']['FOOTER1'];
             echo $footer1Value . ' | ';
         }
-        ?><a title="CS8ABG Dash v24.06" href=https://github.com/Amateur-Digital-Network/ADN-Dashboard.git>CS8ABG</a> ADN Systems Dashboard
+        ?><a title="CS8ABG Dash v25.2" href=https://github.com/Amateur-Digital-Network/ADN-Dashboard.git>CS8ABG</a> ADN Systems Dashboard
                         <?php
         if (isset($config['DASHBOARD']['FOOTER2']) && !empty($config['DASHBOARD']['FOOTER2'])) {
             $footer2Value = $config['DASHBOARD']['FOOTER2'];

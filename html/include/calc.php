@@ -6,8 +6,6 @@
                     <h3 class="card-title" id="clc_title"></h3>
                 </div>
                 <div class="card-body p-0">
-
-
                     <div class="row justify-content-center">
                         <div class="form-group col-2">
                             <div class="row justify-content-center">
@@ -76,7 +74,7 @@
                         <div class="col-8">
                             <table class="table table-sm table-sm border mt-4">
                                 <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="align-middle text-nowrap"><span
                                                 id="calc_dialtg"></span>&nbsp;&nbsp;&nbsp;<i
                                                 class="far fa-question-circle" data-bs-toggle="tooltip"
@@ -84,7 +82,7 @@
                                                 id="calchlpdtg"></i></td>
                                         <td><input type="number" class="form-control form-control-sm" min="0" step="1" id="dialTGInput"
                                                 value="0" oninput="toggleTimeslot2(this.value)"></td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <td class="align-middle text-nowrap"><span
                                                 id="calc_voice"></span>&nbsp;&nbsp;&nbsp;<i
@@ -158,7 +156,6 @@
                         </div>
                     </div>
 
-
                     <div class="row justify-content-center mb-3">
                         <div class="col-5">
                             <div class="row justify-content-center">
@@ -191,13 +188,10 @@
     </div>
 </div>
 
-
-
 <script>
     function toggleTimeslotTable() {
         var modeSelector = document.getElementById('modeSelector');
         var timeslot1Col = document.getElementById('timeslot1col');
-        
 
         if (modeSelector.value === 'Simplex') {
             timeslot1Col.style.display = 'none';
@@ -225,9 +219,9 @@
         var languageRow = document.getElementById('languagerow');
 
         if (voiceSelect.value !== '1') {
-            languagerow.style.display = 'none';
+            languageRow.style.display = 'none';
         } else {
-            languagerow.style.display = 'table-row';
+            languageRow.style.display = 'table-row';
         }
 
         updateGeneratedText();
@@ -331,7 +325,7 @@
             generatedOptions += 'TIMER=' + timeoutValue + ';';
         }
         var generatedOptionsQuotes = '';
-        if (generatedOptions > '1') {
+        if (generatedOptions.length > 1) {
             generatedOptionsQuotes += 'Options="'+ generatedOptions + '"';
         }
         

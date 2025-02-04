@@ -1,5 +1,9 @@
 <div class="container">
+  <p id="stats"></p>
   <p id="opb"></p>
+  <p id="footer"></p>
+  <!-- this solves the footer issue -->
+  <div><br></div>
 </div>
 
 <!-- this checks if id="opb" as content -->

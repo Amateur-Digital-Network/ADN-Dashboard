@@ -64,6 +64,7 @@ if (!isset($_SESSION['preloader_displayed'])) {
       <div class="content" <?php if (!$display_preloader) { echo 'style="min-height: 75vh;"';} ?>>
         <?php
           $page = isset($_GET['p']) ? $_GET['p'] : 'home';
+          $peer_id = isset($_GET['id']) ? (int)$_GET['id'] : null;
               include 'include/' . $page . '.php';
         ?>
         <div>

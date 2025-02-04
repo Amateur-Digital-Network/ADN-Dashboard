@@ -1,4 +1,5 @@
 <div class="container">
+  <p id="stats"></p>
   <p id="tgcount"></p>
   <!-- this solves the footer issue -->
   <div><br></div>

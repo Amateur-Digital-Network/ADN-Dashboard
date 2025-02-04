@@ -3,10 +3,12 @@
     <?php
     try {
         $db = new SQLite3('db/dashboard.db');
-        // Query for peers with ID > 7 digits and N/A frequencies
+        // Query for peers with ID of 6 digits and N/A frequencies
         $query = "SELECT * FROM masters_table 
-                 WHERE rx_freq != 'N/A' 
-                 AND tx_freq != 'N/A'";
+                 WHERE peer_id LIKE '______' 
+                 AND rx_freq != 'N/A' 
+                 AND tx_freq != 'N/A'
+                 AND peer_id NOT LIKE '%[^0-9]%'";
         $result = $db->query($query);
         
         $markers = [];
@@ -34,7 +36,7 @@
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         // Initialize map
-                                        var map = L.map("map").setView([0, 0], 0);
+                                        var map = L.map("map").setView([0, 0], 2);
                                         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                                             attribution: "© OpenStreetMap contributors"
                                         }).addTo(map);
@@ -74,28 +76,24 @@
     }
     ?>
     <p id="repeaters"></p>
-    <p id="hotspots"></p>
-    <p id="brdg"></p>
-    <p id="peers"></p>
+    <p id="footer"></p>
     <!-- this solves the footer issue -->
     <div><br></div>
 </div>
 
+<!-- this checks if id="lnksys" as content -->
 <script>
-  window.addEventListener('load', function () {
-    setInterval(checkMainContent, 5000);
-  });
-
-  function checkMainContent() {
-    var elementsToCheck = ['repeaters', 'hotspots', 'brdg', 'peers'];
-    var contentExists = elementsToCheck.some(function(id) {
-      var element = document.getElementById(id);
-      return element && element.innerHTML.trim() !== '';
+    window.addEventListener('load', function () {
+        setInterval(checkMainContent, 5000);
     });
 
-    if (!contentExists) {
-      // Reload the page
-      location.reload();
+    function checkMainContent() {
+        var mainElement = document.getElementById('repeaters');
+        if (mainElement && mainElement.innerHTML.trim() !== '') {
+            // console.log('OKAY');
+        } else {
+            //console.log('NotOK');
+            location.reload();
+        }
     }
-  }
 </script>

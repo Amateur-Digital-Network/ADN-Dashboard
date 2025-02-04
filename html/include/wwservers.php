@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
@@ -6,7 +8,6 @@
             <h3 class="card-title" id="tbl_srvrs">World Servers</h3>
           </div>
           <div class="card-body p-0">
-            <div id="map" style="height: 450px;"></div><br/>
             <div class="table-responsive">
               <table class="table m-0 table-striped table-sm">
                 <thead>
@@ -94,56 +95,3 @@
       </div>
     </div>
   </div>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq-o0NuOP7gfDZi1qC-bzgRGhzgBZ7DFc&callback=initMap" async defer></script>
-
-<script>
-    var geocoder;
-    var map;
-
-    function initMap() {
-        geocoder = new google.maps.Geocoder();
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 15,
-                lng: 20
-            },
-            zoom: 2,
-            streetViewControl: false,
-            scrollwheel: true
-        });
-
-        <?php
-        foreach ($country_status as $country => $servers) {
-            $status = "Offline";
-            $color = "red";
-
-            foreach ($servers as $server) {
-                if ($server['status'] == 'online' && $server['login_ok']) {
-                    $status = "Online";
-                    $color = "green";
-                    break;
-                } elseif ($server['status'] == 'online' && !$server['login_ok']) {
-                    $status = "Login Rejected";
-                    $color = "yellow";
-                    break;
-                }
-            }
-            $country_without_suffix = str_replace(['_Central', '_Multiprotocol'], '', $country);
-            // Geocode country
-            echo "geocoder.geocode({'address': '" . $country_without_suffix . "'}, function(results, status) {";
-            echo "if (status === 'OK') {";
-            echo "var marker = new google.maps.Marker({";
-            echo "map: map,";
-            echo "position: results[0].geometry.location,";
-            echo "title: '" . $country . "\\n=== " . $status . " ===',";
-            echo "animation: google.maps.Animation.DROP,";
-            echo "icon: 'http://maps.google.com/mapfiles/ms/icons/" . $color . ".png'";
-            echo "});";
-            echo "} else {";
-            echo "console.error('Geocode was not successful for the following reason: ' + status);";
-            echo "}";
-            echo "});";
-        }
-        ?>
-    }
-</script>
