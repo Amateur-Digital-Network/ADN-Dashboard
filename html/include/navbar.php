@@ -112,6 +112,7 @@
                     'ua' => 'UA',
                     'gr' => 'GR',
                     'hu' => 'HU',
+                    'tr' => 'TR',
                 );
                 if (array_key_exists($selectedLanguage, $languages)) {
                     $selectedLanguageName = $languages[$selectedLanguage];
