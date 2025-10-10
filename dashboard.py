@@ -31,6 +31,10 @@ __maintainer__ = 'Bruno, CS8ABG'
 __email__      = 'cs8abg@gmail.com'
 
 # Standard modules
+
+import pprint
+# iz6rnd
+
 import logging
 from collections import deque
 from csv import DictReader as csv_dict_reader
@@ -482,16 +486,26 @@ def add_hb_peer(_peer_conf, _ctable_loc, _peer):
         _ctable_peer["TX_POWER"] = _peer_conf["TX_POWER"].decode("utf-8").strip()
     else:
         _ctable_peer["TX_POWER"] = _peer_conf["TX_POWER"]
-
+        
+    #######################################################################################################
     if str(type(_peer_conf["LATITUDE"])).find("bytes") != -1:
-        _ctable_peer["LATITUDE"] = _peer_conf["LATITUDE"].decode("utf-8").strip()
+      _ctable_peer["LATITUDE"] = _peer_conf["LATITUDE"].decode("utf-8").strip()
+      if '_peer_id' in locals():
+        logger.info(f"[RND - DEBUG COORD] Peer ID: {_peer_id} - CALLSIGN: {_ctable_peer.get('CALLSIGN', 'N/A')} - LATITUDE: {_ctable_peer['LATITUDE']}")
     else:
-        _ctable_peer["LATITUDE"] = _peer_conf["LATITUDE"]
-
+      _ctable_peer["LATITUDE"] = _peer_conf["LATITUDE"]
+      if '_peer_id' in locals():
+        logger.info(f"[RND - DEBUG COORD] Peer ID: {_peer_id} - CALLSIGN: {_ctable_peer.get('CALLSIGN', 'N/A')} - LATITUDE: DEFAULT")
     if str(type(_peer_conf["LONGITUDE"])).find("bytes") != -1:
-        _ctable_peer["LONGITUDE"] = _peer_conf["LONGITUDE"].decode("utf-8").strip()
+      _ctable_peer["LONGITUDE"] = _peer_conf["LONGITUDE"].decode("utf-8").strip()
+      if '_peer_id' in locals():
+        logger.info(f"[RND - DEBUG COORD] Peer ID: {_peer_id} - CALLSIGN: {_ctable_peer.get('CALLSIGN', 'N/A')} - LONGITUDE: {_ctable_peer['LONGITUDE']}")
     else:
-        _ctable_peer["LONGITUDE"] = _peer_conf["LONGITUDE"]
+      _ctable_peer["LONGITUDE"] = _peer_conf["LONGITUDE"]
+      if '_peer_id' in locals():
+        logger.info(f"[RND - DEBUG COORD] Peer ID: {_peer_id} - CALLSIGN: {_ctable_peer.get('CALLSIGN', 'N/A')} - LONGITUDE: DEFAULT")
+    #######################################################################################################
+
 
     if str(type(_peer_conf["HEIGHT"])).find("bytes") != -1:
         _ctable_peer["HEIGHT"] = _peer_conf["HEIGHT"].decode("utf-8").strip()
@@ -774,33 +788,39 @@ def render_fromdb(_tbl, _row_num, _snd=False):
         elif _tbl == "tgcount":
             result = yield db_conn.slct_tgcount(_row_num)
         if result:
+            
             if not _snd:
                 if _tbl == "last_heard":
                     main = "i" + itemplate.render(_table=CTABLE, lastheard=result)
                     dashboard_server.broadcast(main, "main")
-
                 elif _tbl == "lstheard_log":
-                    lsth_log = "h" + htemplate.render(_table=result)
-                    dashboard_server.broadcast(lsth_log, "lsthrd_log")
-
+                    
+                    ########################################################################
+                    # iz6rnd
+                    logger.info("[DEBUG] [100] lstheard_log (len) - [Render START]: %d", len(result))
+                    # !!! logger.info("[DEBUG] [100] lstheard_log (result): " + str(result))
+                    lsth_log = "c" + ctemplate.render(_table=result) # <---------------
+                    # !!! logger.info("[DEBUG] [100] broadcast.lsth_log - start: " + lsth_log)
+                    dashboard_server.broadcast(lsth_log, "lsthrd_log") # <---------------
+                    logger.info("[DEBUG] [100] broadcast.lsth_log - [Render END]")
+                    ########################################################################
+                    
                 elif _tbl == "tgcount" and GROUPS["tgcount"]:
                     tgcount = "t" + ttemplate.render(_table=result)
                     dashboard_server.broadcast(tgcount, "tgcount")
-
             else:
                 if _tbl == "last_heard":
-                    _snd.sendMessage(
-                        ("i" + itemplate.render(_table=CTABLE, lastheard=result)).encode("utf-8"))
-
+                    # iz6rnd
+                    logger.info("[DEBUG] [101] Invoked itemplate.render (last_heard)")
+                    _snd.sendMessage(("i" + itemplate.render(_table=CTABLE, lastheard=result)).encode("utf-8"))
                 elif _tbl == "lstheard_log":
-                    _snd.sendMessage(("h" + htemplate.render(_table=result)).encode("utf-8"))
-
+                    # iz6rnd
+                    logger.info("[DEBUG] [102] Invoked _snd --> sendMessage --> ctemplate.render (_tbl --> lstheard_log --> result)")
+                    _snd.sendMessage(("c" + ctemplate.render(_table=result)).encode("utf-8"))
                 elif _tbl == "tgcount":
                     _snd.sendMessage(("t" + ttemplate.render(_table=result)).encode("utf-8"))
-
     except Exception as err:
         logger.error(f"render_fromdb: {err}, {type(err)}")
-
 
 def build_tgstats():
     if CONFIG and CTABLE:
@@ -957,9 +977,20 @@ def rts_update(p):
 #    THE OPCODE
 #
 def process_message(_bmessage):
+
+
+
     global CTABLE, CONFIG, BRIDGES, CONFIG_RX, BRIDGES_RX
     _message = _bmessage.decode("utf-8", "ignore")
     opcode = _message[:1]
+    
+    
+    # #################################################################
+    # iz6rnd 2025 06 25
+    # logger.info(f"[DEBUG TOTALE] Ricevuto pacchetto: {_message}")
+    ###################################################################
+    
+
     _now = strftime("%Y-%m-%d %H:%M:%S %Z", localtime(time()))
 
     if opcode == OPCODE["CONFIG_SND"]:
@@ -981,8 +1012,18 @@ def process_message(_bmessage):
         logger.info(f"LINK_EVENT Received: {_message[1:]}")
 
     elif opcode == OPCODE["BRDG_EVENT"]:
+
         logger.debug(f"BRIDGE EVENT: {_message[1:]}")
+
+
+        ######################################################################
+        # iz6rnd 2026 06 30
+        # logger.info(f"[DEBUG COMPLETO] Pacchetto grezzo: {_message}")        
+        ######################################################################
+
+                
         p = _message[1:].split(",")
+        
         # Import data from DB
         db2dict(int(p[6]), "subscriber_ids")
         db2dict(int(p[8]), "talkgroup_ids")
@@ -1047,15 +1088,27 @@ def process_message(_bmessage):
             dashboard_server.broadcast("l" + log_message, "log")
             LOGBUF.append(log_message)
 
+        #elif p[0] == "UNIT DATA HEADER" and p[2] != "TX" and p[5] not in CONF["OPB_FLTR"]["OPB_FILTER"]:
+        #    logger.info(f"BRIDGE EVENT: {_message[1:]}")
+        #    # Insert data qso into lstheard DB table
+        #    db_conn.ins_lstheard(None, p[0], p[3], p[8], p[6])
+        #    # Insert data qso into lstheard_log DB table
+        #    db_conn.ins_lstheard_log(None, p[0], p[3], p[8], p[6])
+        #else:
+        #    logger.warning(f"Unknown log message: {_message}")
+        
+        #########################################################################
+        # iz6rnd / 2025 06 28
         elif p[0] == "UNIT DATA HEADER" and p[2] != "TX" and p[5] not in CONF["OPB_FLTR"]["OPB_FILTER"]:
             logger.info(f"BRIDGE EVENT: {_message[1:]}")
-            # Insert data qso into lstheard DB table
             db_conn.ins_lstheard(None, p[0], p[3], p[8], p[6])
-            # Insert data qso into lstheard_log DB table
             db_conn.ins_lstheard_log(None, p[0], p[3], p[8], p[6])
-
+        elif p[0].startswith("UNIT CSBK") or p[0].startswith("UNIT VCSBK"):
+            logger.debug(f"Ignored control message: {_message}")
         else:
             logger.warning(f"Unknown log message: {_message}")
+        #########################################################################
+
 
     elif opcode == OPCODE["SERVER_MSG"]:
         logger.debug(f"SERVER MSG: {_message}")
@@ -1202,11 +1255,30 @@ class dashboardFactory(WebSocketServerFactory):
             if client in self.clients[group]:
                 del self.clients[group][client]
 
+#    def broadcast(self, msg, group):
+#        logger.debug(f"broadcasting message to: {self.clients[group]}")
+#        for client in self.clients[group]:
+#            client.sendMessage(msg.encode("utf8"))
+#            logger.debug(f"message sent to {client.peer}")
+
+##############################################################################
+# iz6rnd / 2025 06 28
     def broadcast(self, msg, group):
-        logger.debug(f"broadcasting message to: {self.clients[group]}")
-        for client in self.clients[group]:
-            client.sendMessage(msg.encode("utf8"))
-            logger.debug(f"message sent to {client.peer}")
+      logger.debug(f"broadcasting message to: {self.clients[group]}")
+      to_remove = []
+
+      for client in self.clients[group]:
+        try:
+          client.sendMessage(msg.encode("utf8"))
+          logger.debug(f"message sent to {client.peer}")
+        except Exception as err:
+          logger.warning(f"Failed to send message to {client.peer}: {err}")
+          to_remove.append(client)
+
+      for client in to_remove:
+          self.unregister(client)
+##############################################################################
+
 
 
 @inlineCallbacks
@@ -1276,7 +1348,10 @@ if __name__ == "__main__":
     itemplate = env.get_template("main_table.html")
     otemplate = env.get_template("opb_table.html")
     stemplate = env.get_template("statictg_table.html")
-    htemplate = env.get_template("lasthrd_log.html")
+    
+    # iz6rnd
+    ctemplate = env.get_template("lasthrd_log.html")
+    
     ttemplate = env.get_template("tgcount_table.html")
     xtemplate = env.get_template("stats_boxes.html")
     atemplate = env.get_template("activity_box.html")
@@ -1309,7 +1384,7 @@ if __name__ == "__main__":
 
     # Update database tables from CTABLE
     update_db = task.LoopingCall(initialize_ctable_to_db)
-    update_db.start(10).addErrback(error_hdl)
+    update_db.start(20).addErrback(error_hdl)
     # Clean old entries every 60 seconds
     clean_db = task.LoopingCall(cleanup_old_database_entries)
     clean_db.start(60).addErrback(error_hdl) 
