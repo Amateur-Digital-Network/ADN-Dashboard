@@ -29,12 +29,12 @@ pip3 install --no-cache-dir bitstring bitarray Twisted dmr_utils3 configparser r
 Clone the Dashboard
 ```bash
 cd /opt &&
-git clone https://github.com/Amateur-Digital-Network/ADN-Dashboard.git dashboard 
+git clone https://github.com/Amateur-Digital-Network/ADN-Dashboard.git adn-dashboard 
 ```
 
 Create config files
 ```bash
-cd dashboard &&
+cd adn-dashboard &&
 cp dashboard_SAMPLE.cfg dashboard.cfg &&
 cd proxy &&
 cp proxy_SAMPLE.cfg proxy.cfg
@@ -42,13 +42,13 @@ cp proxy_SAMPLE.cfg proxy.cfg
 
 Create the database file
 ```bash
-cd /opt/dashboard &&
+cd /opt/adn-dashboard &&
 python3 dash_db.py
 ```
 
 Set the ownership of html folder
 ```bash
-chown -R www-data:www-data /opt/dashboard/html/
+chown -R www-data:www-data /opt/adn-dashboard/html/
 ```
 
 Create Apache configuration
@@ -71,7 +71,7 @@ nano /etc/apache2/apache2.conf
 ```
 add this to the apache2.conf and save the file (CTRL+S CTRL+X)
 ```bash
-<Directory /opt/dashboard/>
+<Directory /opt/adn-dashboard/>
 	Options Indexes FollowSymLinks
 	AllowOverride None
 	Require all granted
@@ -99,9 +99,9 @@ Wants=network-online.target
 
 [Service]
 StandardOutput=null
-WorkingDirectory=/opt/dashboard
+WorkingDirectory=/opt/adn-dashboard
 RestartSec=3
-ExecStart=/usr/bin/python3 /opt/dashboard/dashboard.py
+ExecStart=/usr/bin/python3 /opt/adn-dashboard/dashboard.py
 Restart=on-abort
 
 [Install]
@@ -120,9 +120,9 @@ After=multi-user.target
 
 [Service]
 StandardOutput=null
-WorkingDirectory=/opt/dashboard
+WorkingDirectory=/opt/adn-dashboard
 RestartSec=3
-ExecStart=/usr/bin/python3 /opt/dashboard/proxy/hotspot_proxy_v2.py -c /opt/dashboard/proxy/proxy.cfg
+ExecStart=/usr/bin/python3 /opt/adn-dashboard/proxy/hotspot_proxy_v2.py -c /opt/adn-dashboard/proxy/proxy.cfg
 Restart=on-failure
 
 [Install]
