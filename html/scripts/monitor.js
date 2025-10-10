@@ -21,6 +21,8 @@ window.onload = function () {
     peers_tbl = document.getElementById('peers');
     footer_box = document.getElementById('footer');
 
+    log_box = document.getElementById('log'); // iz6rnd
+
     wsuri = (((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.hostname + ":9000");
 
     if ("WebSocket" in window) {
@@ -59,7 +61,7 @@ window.onload = function () {
                 } else if (group == 'tgcount') {
                     tgcount_tbl.innerHTML = "";
                 } else if (group == 'lsthrd_log') {
-                    lsthrd_log_tbl.innerHTML = "";
+                    log_box.innerHTML = "[y-0001-lsthrd_log]"; // iz6rnd
                 } else if (group == 'status') {
                     status_box.innerHTML = "";
                 } else if (group == 'activity') {
@@ -99,8 +101,8 @@ window.onload = function () {
                 Rmsg(message);
             } else if (opcode == 'z') {
                 Zmsg(message);
-            } else if (opcode == 'h') {
-                Hmsg(message);
+            } else if (opcode == 'c') {
+                Cmsg(message); // era h/H iz6rnd
             } else if (opcode == 'p') {
                 Pmsg(message);
             } else if (opcode == 'f') {
@@ -122,7 +124,7 @@ window.onload = function () {
                     } else if (group == "tgcount") {
                         tgcount_tbl.innerHTML = "";
                     } else if (group == 'lsthrd_log') {
-                        lsthrd_log_tbl.innerHTML = "";
+                        log_box.innerHTML = "[y-0002-lsthrd_log]"; // iz6rnd
                     } else if (group == 'stats') {
                         status_box.innerHTML = "";
                     } else if (group == 'activity') {
@@ -235,13 +237,16 @@ function Smsg(_msg) {
         });
 }
 
-function Hmsg(_msg) {
+// iz6rnd
+function Cmsg(_msg) {
     fetch('translations.json')
         .then(response => response.json())
         .then(translations => {
             const languageSelect = document.getElementById('languageSelect');
-            //const lsthrd_log_tbl = document.getElementById('lsthrd_log_tbl');
-
+            const lsthrd_log_tbl = document.getElementById('lsthrd_log');
+            if (lsthrd_log_tbl) {
+                // console.log("lsthrd_log_tbl-->lsthrd_log-->OK");
+            }
             // Function to translate the page based on the selected language
             function translatePage() {
                 const selectedLanguage = languageSelect.value;
@@ -253,10 +258,11 @@ function Hmsg(_msg) {
                     }
                 });
             }
-
-            // Update the content after translations are loaded
-            lsthrd_log_tbl.innerHTML = _msg;
-
+            
+			// Update the content after translations are loaded
+			lsthrd_log.innerHTML = _msg;            
+			// lsthrd_log_tbl.innerHTML = "--->" + _msg; // iz6rnd
+            
             // Translate the page on initial load
             translatePage();
 
@@ -541,6 +547,59 @@ fetch('translations.json')
   });
 
 
+
+// iz6rnd
+/*
+fetch('translations.json')
+	.then(response => response.json())
+	.then(translations => {
+		const languageSelect = document.getElementById('languageSelect');
+		function translatePage() {
+			const selectedLanguage = languageSelect.value;
+			Object.keys(translations).forEach(key => {
+				const element = document.getElementById(key);
+				const translation = translations[key]?.[selectedLanguage];
+				if (!element) return; // salta elementi mancanti
+					try {
+						if (element.getAttribute('data-bs-toggle') === 'tooltip') {
+							if (!translation) {
+								console.warn(`[TDBG-WARN] Traduzione mancante per tooltip ID: ${key}`);
+								element.setAttribute('data-bs-title', ''); // fallback vuoto
+							} else {
+								element.setAttribute('data-bs-title', translation);
+							}
+						} else if (element.tagName === 'INPUT') {
+							element.setAttribute('placeholder', translation ?? '');
+						} else {
+							element.textContent = translation ?? '';
+						}
+					} catch (e) {
+					console.error(`[TDBG-ERR] Errore traducendo ID: ${key}`, e);
+				}
+			});
+			// Reinizializza tooltips
+			const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+			tooltipTriggerList.forEach(el => {
+				try {
+					const title = el.getAttribute('data-bs-title');
+					if (title === null) {
+						console.warn(`[TDBG-WARN] Tooltip con attributo NULL: ID="${el.id}", elemento:`, el);
+					}
+					new bootstrap.Tooltip(el);
+				} catch (e) {
+					console.error(`[TDBG-ERR] Errore inizializzando tooltip ID="${el.id}":`, e);
+				}
+		});
+	}
+	// Prima traduzione e listener
+	translatePage();
+	languageSelect.addEventListener('change', translatePage);
+})
+.catch(err => {
+	console.error('[TDBG-ERR] Errore caricamento o parsing translations.json:', err);
+});
+*/
+
 function log(_msg) {
     ellog.innerHTML += _msg + '\n';
     ellog.scrollTop = ellog.scrollHeight;
@@ -556,6 +615,6 @@ function conf_id() {
                 conf_groups.push(tags[i][j].id);
             }
     }
-    console.log(conf_groups)
+    // console.log("GRUPPI: " + conf_groups) -- iz6rnd
 };
 
