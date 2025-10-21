@@ -74,7 +74,7 @@
                         <div class="col-8">
                             <table class="table table-sm table-sm border mt-4">
                                 <tbody>
-                                    <!-- <tr>
+                                    <tr>
                                         <td class="align-middle text-nowrap"><span
                                                 id="calc_dialtg"></span>&nbsp;&nbsp;&nbsp;<i
                                                 class="far fa-question-circle" data-bs-toggle="tooltip"
@@ -82,7 +82,7 @@
                                                 id="calchlpdtg"></i></td>
                                         <td><input type="number" class="form-control form-control-sm" min="0" step="1" id="dialTGInput"
                                                 value="0" oninput="toggleTimeslot2(this.value)"></td>
-                                    </tr> -->
+                                    </tr>
                                     <tr>
                                         <td class="align-middle text-nowrap"><span
                                                 id="calc_voice"></span>&nbsp;&nbsp;&nbsp;<i
