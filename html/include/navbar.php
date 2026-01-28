@@ -29,6 +29,14 @@
                 <li class="nav-item">
                     <a href="index.php?p=monitor" class="nav-link" id="nav_mon"></a>
                 </li>
+                <?php
+                // Selfcare: solo si la clave existe (no comentada)
+                if (isset($config['DASHBOARD']['SELFCARE'])) {
+                    echo '<li class="nav-item">';
+                    echo '<a href="https://selfcare.adn.systems/" class="nav-link">Selfcare</a>';
+                    echo '</li>';
+                }
+                ?>                
                 <li class="nav-item">
                     <a href="ssmain.php" class="nav-link">Self Service</a>
                 </li>
