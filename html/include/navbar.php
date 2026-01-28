@@ -30,16 +30,27 @@
                     <a href="index.php?p=monitor" class="nav-link" id="nav_mon"></a>
                 </li>
                 <?php
-                // Selfcare: solo si la clave existe (no comentada)
-                if (isset($config['DASHBOARD']['SELFCARE'])) {
+                // Selfcare: solo si SELFCARE = true
+                if (
+                    isset($config['DASHBOARD']['SELFCARE']) &&
+                    filter_var($config['DASHBOARD']['SELFCARE'], FILTER_VALIDATE_BOOLEAN)
+                ) {
                     echo '<li class="nav-item">';
                     echo '<a href="https://selfcare.adn.systems/" class="nav-link">Selfcare</a>';
                     echo '</li>';
                 }
-                ?>                
-                <li class="nav-item">
-                    <a href="ssmain.php" class="nav-link">Self Service</a>
-                </li>
+                ?>
+                <?php
+                // Self Service: visible por defecto, solo se oculta si SELFSERVICE=false
+                if (
+                    !isset($config['DASHBOARD']['SELFSERVICE']) ||
+                    filter_var($config['DASHBOARD']['SELFSERVICE'], FILTER_VALIDATE_BOOLEAN)
+                ) {
+                    echo '<li class="nav-item">';
+                    echo '<a href="ssmain.php" class="nav-link">Self Service</a>';
+                    echo '</li>';
+                }
+                ?>
                 <li class="nav-item dropdown dropdown-hover">
                     <a id="dropdownSubMenu1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link dropdown-toggle"><span
