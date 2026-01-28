@@ -1,3 +1,20 @@
+<?php
+$HAS_OPENBRIDGE = false;
+
+try {
+    $db = new SQLite3(__DIR__ . '/../db/dashboard.db');
+
+    $count = $db->querySingle("SELECT COUNT(*) FROM openbridges_table");
+
+    if ($count > 0) {
+        $HAS_OPENBRIDGE = true;
+    }
+
+    $db->close();
+} catch (Exception $e) {
+    $HAS_OPENBRIDGE = false;
+}
+?>
 <nav class="main-header navbar navbar-expand-lg navbar-light navbar-dark text-sm">
     <div class="container text-nowrap">
         <a href="#" class="navbar-brand">
@@ -20,9 +37,11 @@
                 <li class="nav-item">
                     <a href="index.php?p=systemstg" class="nav-link" id="nav_statg"></a>
                 </li>
+                <?php if ($HAS_OPENBRIDGE): ?>
                 <li class="nav-item">
                     <a href="index.php?p=openbridge" class="nav-link" id="nav_opb"></a>
                 </li>
+                <?php endif; ?>
                 <li class="nav-item">
                     <a href="index.php?p=toptg" class="nav-link" id="nav_tptg"></a>
                 </li>
