@@ -55,10 +55,13 @@ try {
                     filter_var($config['DASHBOARD']['SELFCARE'], FILTER_VALIDATE_BOOLEAN)
                 ) {
                     echo '<li class="nav-item">';
-                    echo '<a href="https://selfcare.adn.systems/" class="nav-link">Selfcare</a>';
+                    echo '<a href="index.php?p=self" class="nav-link">SelfCare</a>';
                     echo '</li>';
                 }
                 ?>
+                <li class="nav-item dropdown dropdown-hover">
+                    <a id="dropdownSubMenu1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"></a>
+                </li>
                 <?php
                 // Self Service: visible por defecto, solo se oculta si SELFSERVICE=false
                 if (
