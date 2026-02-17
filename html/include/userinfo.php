@@ -12,13 +12,26 @@
             if ($row) {
                 // Show map if coordinates exist
                 if (!empty($row['latitude']) && !empty($row['longitude'])) {
+                    
+                    // === LÓGICA DE SELECCIÓN DE ICONO (del segundo PHP) ===
+                    $icon = 'images/default.png'; // Default por defecto
+                    
+                    if (strlen($row['peer_id']) == 6) {
+                        $icon = 'img/antenna.png'; // Antena para ID de 6 dígitos (repetidor)
+                    } elseif (strlen($row['peer_id']) > 6 && $row['tx_freq'] != 'N/A' && $row['rx_freq'] != 'N/A') {
+                        $icon = 'img/hotspot.png'; // Hotspot para ID >6 dígitos con frecuencias
+                    } elseif (strlen($row['peer_id']) > 6 && $row['tx_freq'] == 'N/A' && $row['rx_freq'] == 'N/A') {
+                        $icon = 'images/bridge.png'; // Bridge para ID >6 dígitos sin frecuencias
+                    }
+                    // =====================================================
+
                     echo '  <div class="row justify-content-center">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body p-0">';
                     echo '                  <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>';
                     
-                    // Add Leaflet.js map script
+                    // Add Leaflet.js map script con icono personalizado
                     echo '
                     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
                     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -30,19 +43,29 @@
                                 attribution: "&copy; OpenStreetMap contributors"
                             }).addTo(map);
 
-                            L.marker(['.$row['latitude'].', '.$row['longitude'].'])
+                            // === ICONO PERSONALIZADO BASADO EN TIPO DE ESTACIÓN ===
+                            var customIcon = L.icon({
+                                iconUrl: "'.htmlspecialchars($icon).'",
+                                iconSize: [32, 32],
+                                iconAnchor: [16, 32],
+                                popupAnchor: [0, -32]
+                            });
+
+                            L.marker(['.$row['latitude'].', '.$row['longitude'].'], { icon: customIcon })
                             .addTo(map)
                             .bindPopup("<b>'.htmlspecialchars($row['callsign']).'</b><br>'.
                                         htmlspecialchars($row['location']).'<br>'.
                                         '<b>TX: </b>' . htmlspecialchars($row['tx_freq']).'<br>'.
                                         '<b>RX: </b>' . htmlspecialchars($row['rx_freq']).'")
                             .openPopup();
+                            // =====================================================
                         });
                     </script>';
                 } else {
                     echo "<p>No location coordinates available.</p>";
                 }
-                // Show user info
+                
+                // Show user info (sin cambios)
                 echo '                      <h3 class="text-center">' . htmlspecialchars($row['callsign']) . '</h3>
                                             <div class="table-responsive">
                                                 <table class="table m-0 table-striped table-sm">
