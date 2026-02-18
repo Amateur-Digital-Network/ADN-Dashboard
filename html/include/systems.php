@@ -24,9 +24,9 @@
                 } elseif (strlen($row['peer_id']) > 6 && $row['tx_freq'] != 'N/A' && $row['rx_freq'] != 'N/A') {
                     $row['icon'] = 'img/hotspot.png'; // Hotspot icon
                 } elseif (strlen($row['peer_id']) > 6 && $row['tx_freq'] == 'N/A' && $row['rx_freq'] == 'N/A') {
-                    $row['icon'] = 'images/bridge.png'; // Bridge icon
+                    $row['icon'] = 'img/bridge.png'; // Bridge icon
                 } else {
-                    $row['icon'] = 'images/default.png'; // Default icon (optional)
+                    $row['icon'] = 'img/default.png'; // Default icon (optional)
                 }
 
                 $markers[] = $row;
