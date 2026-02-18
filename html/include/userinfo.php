@@ -14,14 +14,14 @@
                 if (!empty($row['latitude']) && !empty($row['longitude'])) {
                     
                     // === LÓGICA DE SELECCIÓN DE ICONO (del segundo PHP) ===
-                    $icon = 'images/default.png'; // Default por defecto
+                    $icon = 'img/default.png'; // Default por defecto
                     
                     if (strlen($row['peer_id']) == 6) {
                         $icon = 'img/antenna.png'; // Antena para ID de 6 dígitos (repetidor)
                     } elseif (strlen($row['peer_id']) > 6 && $row['tx_freq'] != 'N/A' && $row['rx_freq'] != 'N/A') {
                         $icon = 'img/hotspot.png'; // Hotspot para ID >6 dígitos con frecuencias
                     } elseif (strlen($row['peer_id']) > 6 && $row['tx_freq'] == 'N/A' && $row['rx_freq'] == 'N/A') {
-                        $icon = 'images/bridge.png'; // Bridge para ID >6 dígitos sin frecuencias
+                        $icon = 'img/bridge.png'; // Bridge para ID >6 dígitos sin frecuencias
                     }
                     // =====================================================
 
